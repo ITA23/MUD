@@ -2,7 +2,7 @@ package ita23.projekt.mud.items;
 
 public abstract class BasicItem {
 	
-	private boolean isHidden = false;
+	private boolean inInventar = false;
 	
 	/**
 	 * Gibt den Namen des Items zurück
@@ -10,12 +10,12 @@ public abstract class BasicItem {
 	 */
 	public abstract String getName();
 	
-	public boolean isHidden(){
-		return isHidden;
+	public boolean inInventar(){
+		return inInventar;
 	}
 	
-	public void setHidden(boolean value){
-		this.isHidden = value;
+	public void setInInventar(boolean value){
+		this.inInventar = value;
 	}
 
 }

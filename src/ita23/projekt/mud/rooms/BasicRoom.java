@@ -24,7 +24,7 @@ public abstract class BasicRoom {
 	public BasicItem getItem(String name) throws ItemNotFoundException{
 		for (BasicItem item : dinge){
 			if (item.getName().equalsIgnoreCase(name)){
-				item.setHidden(true);
+				item.setInInventar(true);
 				return item;
 			}
 		}
@@ -34,7 +34,7 @@ public abstract class BasicRoom {
 	public String listItems(){
 		StringBuilder b = new StringBuilder();
 		for (BasicItem item : dinge){
-			if (!item.isHidden()) b.append("* "+item.getName()+"\n");
+			if (!item.inInventar()) b.append("* "+item.getName()+"\n");
 		}
 		return b.toString();
 	}

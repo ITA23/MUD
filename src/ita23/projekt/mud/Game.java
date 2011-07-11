@@ -20,6 +20,7 @@ public class Game {
 	private static final String NEHMEN = "nimm";
 	private static final String DINGE = "dinge";
 	private static final String LIST_INVENTAR = "inventar";
+	private static final String HILFE = "hilfe";
 	private static final String BEENDEN = "exit";
 	
 	/**
@@ -36,7 +37,6 @@ public class Game {
 			String item_name = input.substring(NEHMEN.length()+1);
 			try {
 				BasicItem i = akt_room.getItem(item_name);
-				i.setHidden(false);
 				inventar.put(item_name, i);
 			} catch (ItemNotFoundException e) {
 				return "In diesem Raum gibt es kein "+item_name;
@@ -46,18 +46,32 @@ public class Game {
 			// Liste alle Gegenstände im Inventar
 			StringBuilder b = new StringBuilder();
 			b.append("Dinge in deinem Inventar:\n");
+			if (inventar.size() == 0) return "Dein Inventar ist leer";
 			for ( Map.Entry<String, BasicItem> item : inventar.entrySet() ){
-				if (!item.getValue().isHidden()){
-					b.append( "* "+item.getValue().getName()+"\n" );
-				}
+				b.append( "* "+item.getValue().getName()+"\n" );
 			}
 			return b.toString();
 		} else if (input.startsWith(BEENDEN)){
+			// Beende das Spiel
 			this.isPlaying = false;
 			return "Spiel wird beendet...";
+		} else if (input.startsWith(HILFE)){
+			// Ausgabe aller Befehle
+			return DINGE+" <> Listet alle Dinge im aktuellen Raum auf\n" +
+					NEHMEN+" <> Nimm einen Gegenstand aus dem aktuellen Raum\n" +
+					LIST_INVENTAR+" <> Listet alle Gegenstände im Inventar auf\n" +
+					BEENDEN+" <> Beendet das Spiel";
 		} else {
 			return input+" ist kein gültiger Befehl.";
 		}
+	}
+	
+	/**
+	 * Gibt die Geschichte zum aktuellen Raum zurück.
+	 * @return Die Geschichte als String
+	 */
+	public String getStory(){
+		return akt_room.getStory();
 	}
 	
 	/**

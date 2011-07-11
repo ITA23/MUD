@@ -10,6 +10,9 @@ public class Main {
 	private Main(){
 		in = new Scanner(System.in);
 		game = Game.getInstance();
+		// Prolog:
+		pl("\n\nInspector SlowMo und Detective ZeitRaffa - Nico's Rache\n" +
+			"--------------");
 		// Starte das Spiel:
 		loop();
 	}
@@ -18,6 +21,7 @@ public class Main {
 	 * Nimmt eingaben entgegen und reagiert darauf.
 	 */
 	private void loop(){
+		pl(game.getStory());
 		while (game.isPlaying()){
 			input();
 			pl(game.parse(in.nextLine()));
