@@ -1,24 +1,35 @@
 package ita23.projekt.mud;
 
-import ita23.projekt.mud.rooms.BasicRoom;
-import ita23.projekt.mud.rooms.implementations.StartRoom;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 	
-	
 	private Scanner in;
+	private Game game;
 	
 	private Main(){
-		
 		in = new Scanner(System.in);
+		game = Game.getInstance();
 		// Starte das Spiel:
-		BasicRoom r = rooms.get("start");
-		System.out.println(r.getStory());
-		
+		loop();
+	}
+	
+	/**
+	 * Nimmt eingaben entgegen und reagiert darauf.
+	 */
+	private void loop(){
+		while (game.isPlaying()){
+			input();
+			pl(game.parse(in.next()));
+		} 
+	}
+	
+	private void pl(String in){
+		System.out.println(in);
+	}
+	
+	private void input(){
+		System.out.print("> ");
 	}
 	
 	public static void main(String[] args){

@@ -24,16 +24,17 @@ public abstract class BasicRoom {
 	public BasicItem getItem(String name) throws ItemNotFoundException{
 		for (BasicItem item : dinge){
 			if (item.getName().equals(name)){
+				item.setHidden(true);
 				return item;
 			}
 		}
 		throw new ItemNotFoundException("Das Item konnte nicht gefunden werden");
 	}
 	
-	public String listItem(){
+	public String listItems(){
 		StringBuilder b = new StringBuilder();
 		for (BasicItem item : dinge){
-			b.append("* "+item.getName()+"\n");
+			if (!item.isHidden()) b.append("* "+item.getName()+"\n");
 		}
 		return b.toString();
 	}
