@@ -9,12 +9,12 @@ Erungenschaften des ersten tages:
 
 * Mit SQLite und Java herumgespielt
 * Grundarbeiten am Framework
-* Beispiele für die Erweiterungen der Klassen
+* Beispiele fÃ¼r die Erweiterungen der Klassen
 
 #### Implementiert ####
 Was funktioniert bereits:
 
 * Der aktuelle Raum kann auf Items durchsucht werden.
-* Items können aufgenommen werden
+* Items kÃ¶nnen aufgenommen werden
 * Das Inventar kann durchsucht werden
 * Hilfe mit einer Auflistung aller Befehle und ihrer Aktion.

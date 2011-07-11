@@ -18,8 +18,8 @@ public class StartRoom extends BasicRoom{
 
 	@Override
 	public String getStory() {
-		return "Inspector Mo und Detective Zeitraffa betreten zielstrebig die groﬂe Halle am Ende " +
-				"des Flurs. Es richt ein wenig nach Schieﬂpulver als die T¸re langsam ins Schloss f‰llt.";
+		return "Inspector Mo und Detective Zeitraffa betreten zielstrebig die gro√üe Halle am Ende " +
+				"des Flurs. Es richt ein wenig nach Schie√üpulver als die T√ºre langsam ins Schloss f√§llt.";
 	}
 
 }

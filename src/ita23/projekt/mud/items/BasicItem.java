@@ -5,7 +5,7 @@ public abstract class BasicItem {
 	private boolean inInventar = false;
 	
 	/**
-	 * Gibt den Namen des Items zurück
+	 * Gibt den Namen des Items zurÃ¼ck
 	 * @return
 	 */
 	public abstract String getName();

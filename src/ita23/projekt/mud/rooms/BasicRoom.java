@@ -6,17 +6,17 @@ import ita23.projekt.mud.items.ItemNotFoundException;
 public abstract class BasicRoom {
 	
 	/**
-	 * Items welche in diesem Raum gefuden werden können.
+	 * Items welche in diesem Raum gefuden werden kÃ¶nnen.
 	 */
 	protected BasicItem[] dinge;
 	
 	/**
-	 * Die Liste der Dinge füllen, etz.
+	 * Die Liste der DingefÃ¼llen, etz.
 	 */
 	public abstract void initialisieren();
 	
 	/**
-	 * Gibt die Story zu diesem Raum als String zurück.
+	 * Gibt die Story zu diesem Raum als String zurÃ¼ck.
 	 * @return
 	 */
 	public abstract String getStory();

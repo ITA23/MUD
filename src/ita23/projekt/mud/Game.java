@@ -16,7 +16,7 @@ public class Game {
 	private boolean isPlaying;
 	/** Aktueller Raum */
 	private BasicRoom akt_room;
-	/** Signalwörter für Aktionen */
+	/** SignalwÃ¶rter fÃ¼r Aktionen */
 	private static final String NEHMEN = "nimm";
 	private static final String DINGE = "dinge";
 	private static final String LIST_INVENTAR = "inventar";
@@ -24,7 +24,7 @@ public class Game {
 	private static final String BEENDEN = "exit";
 	
 	/**
-	 * Parst den input des Benutzers und gibt die Nachricht zurück.
+	 * Parst den input des Benutzers und gibt die Nachricht zurÃ¼ck.
 	 * @param input Der eingabe-String des Benutzers
 	 * @return Der generierte String.
 	 */
@@ -43,7 +43,7 @@ public class Game {
 			}
 			return "Du hast "+item_name+" aufgenommen.";
 		} else if (input.startsWith(LIST_INVENTAR)){
-			// Liste alle Gegenstände im Inventar
+			// Liste alle Gegenstï¿½nde im Inventar
 			StringBuilder b = new StringBuilder();
 			b.append("Dinge in deinem Inventar:\n");
 			if (inventar.size() == 0) return "Dein Inventar ist leer";
@@ -59,15 +59,15 @@ public class Game {
 			// Ausgabe aller Befehle
 			return DINGE+" <> Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" <> Nimm einen Gegenstand aus dem aktuellen Raum\n" +
-					LIST_INVENTAR+" <> Listet alle Gegenstände im Inventar auf\n" +
+					LIST_INVENTAR+" <> Listet alle GegenstÃ¤nde im Inventar auf\n" +
 					BEENDEN+" <> Beendet das Spiel";
 		} else {
-			return input+" ist kein gültiger Befehl.";
+			return input+" ist kein gÃ¼ltiger Befehl.";
 		}
 	}
 	
 	/**
-	 * Gibt die Geschichte zum aktuellen Raum zurück.
+	 * Gibt die Geschichte zum aktuellen Raum zurÃ¼ck.
 	 * @return Die Geschichte als String
 	 */
 	public String getStory(){
@@ -88,8 +88,8 @@ public class Game {
 	}
 	
 	/**
-	 * Git "true" zurück wenn das Spiel noch läuft.
-	 * @return Ob das Spiel noch läuft.
+	 * Git "true" zurÃ¼ck wenn das Spiel noch lÃ¤uft.
+	 * @return Ob das Spiel noch lÃ¤uft.
 	 */
 	public boolean isPlaying(){
 		return isPlaying;
@@ -103,7 +103,7 @@ public class Game {
 	}
 	
 	/**
-	 * Gibt die einzige Instanz der Klasse zurück
+	 * Gibt die einzige Instanz der Klasse zurÃ¼ck
 	 * @return Die einzige Instanz der Klasse
 	 */
 	public static synchronized Game getInstance(){
