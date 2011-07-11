@@ -5,6 +5,10 @@ import ita23.projekt.mud.items.implementations.Blutwurst;
 import ita23.projekt.mud.rooms.BasicRoom;
 
 public class StartRoom extends BasicRoom{
+	
+	public StartRoom(){
+		this.initialisieren();
+	}
 
 	@Override
 	public void initialisieren() {

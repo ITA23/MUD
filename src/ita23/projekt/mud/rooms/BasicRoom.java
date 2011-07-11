@@ -23,7 +23,7 @@ public abstract class BasicRoom {
 	
 	public BasicItem getItem(String name) throws ItemNotFoundException{
 		for (BasicItem item : dinge){
-			if (item.getName().equals(name)){
+			if (item.getName().equalsIgnoreCase(name)){
 				item.setHidden(true);
 				return item;
 			}

@@ -20,7 +20,7 @@ public class Main {
 	private void loop(){
 		while (game.isPlaying()){
 			input();
-			pl(game.parse(in.next()));
+			pl(game.parse(in.nextLine()));
 		} 
 	}
 	

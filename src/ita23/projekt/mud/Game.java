@@ -17,7 +17,7 @@ public class Game {
 	/** Aktueller Raum */
 	private BasicRoom akt_room;
 	/** Signalwörter für Aktionen */
-	private static final String NEHMEN = "nimm ";
+	private static final String NEHMEN = "nimm";
 	private static final String DINGE = "dinge";
 	private static final String LIST_INVENTAR = "inventar";
 	private static final String BEENDEN = "exit";
@@ -33,7 +33,7 @@ public class Game {
 			return akt_room.listItems();
 		} else if (input.startsWith(NEHMEN)){
 			// Nimm irgendwas.
-			String item_name = input.split(" ")[1];
+			String item_name = input.substring(NEHMEN.length()+1);
 			try {
 				BasicItem i = akt_room.getItem(item_name);
 				i.setHidden(false);
@@ -45,9 +45,10 @@ public class Game {
 		} else if (input.startsWith(LIST_INVENTAR)){
 			// Liste alle Gegenstände im Inventar
 			StringBuilder b = new StringBuilder();
+			b.append("Dinge in deinem Inventar:\n");
 			for ( Map.Entry<String, BasicItem> item : inventar.entrySet() ){
 				if (!item.getValue().isHidden()){
-					b.append( item.getValue().getName() );
+					b.append( "* "+item.getValue().getName()+"\n" );
 				}
 			}
 			return b.toString();
