@@ -2,7 +2,7 @@
 
 MUD Projekt aus der Projektphase 2011.
 
-Das Ziel wahr es, ein MUD (Multi User Dungeon) zu programmieren.
+Das Ziel war es, ein MUD (Multi User Dungeon) zu programmieren.
 Die Projektphase erstreckte sich dabei über 2 Wochen.
 
 ## Implementiert ##
@@ -16,7 +16,7 @@ Was funktioniert bereits:
 
 ## Entwicklungs Tagebuch ##
 
-## Tag 2 ##
+### Tag 2 ###
 Was am Zweiten Arbeitstag geschafft wurde:
 
 * Items können nun miteinander Kombiniert werden

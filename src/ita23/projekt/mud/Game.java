@@ -23,6 +23,7 @@ public class Game {
 	private static final String DINGE = "dinge";
 	private static final String LIST_INVENTAR = "inventar";
 	private static final String BENUTZE = "benutze";
+	private static final String STORY = "story";
 	private static final String HILFE = "hilfe";
 	private static final String BEENDEN = "exit";
 	
@@ -85,11 +86,18 @@ public class Game {
 			return "Spiel wird beendet...";
 		} 
 		// ------------------------------------
+		else if (input.startsWith(STORY)){
+			// Story nochmla lesen:
+			return akt_room.getStory();
+		}
+		// ------------------------------------
 		else if (input.startsWith(HILFE)){
 			// Ausgabe aller Befehle
 			return DINGE+" <> Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" <> Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" <> Listet alle Gegenstände im Inventar auf\n" +
+					BENUTZE+" <> Benute einen Gegenstand im Inventar mit einem anderen.\n"+
+					STORY+" <> Zeigt die Story zum aktuellen Raum erneut an.\n"+
 					BEENDEN+" <> Beendet das Spiel";
 		} 
 		// ------------------------------------
