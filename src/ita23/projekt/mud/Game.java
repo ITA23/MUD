@@ -1,6 +1,8 @@
 package ita23.projekt.mud;
 
+import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
+import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.ItemNotFoundException;
 import ita23.projekt.mud.rooms.BasicRoom;
 import ita23.projekt.mud.rooms.implementations.StartRoom;
@@ -12,7 +14,7 @@ public class Game {
 	
 	private static Game g;
 	private Map<String, BasicRoom> rooms;
-	private Map<String, BasicItem> inventar;
+	public Map<String, BasicItem> inventar;
 	private boolean isPlaying;
 	/** Aktueller Raum */
 	private BasicRoom akt_room;
@@ -20,6 +22,7 @@ public class Game {
 	private static final String NEHMEN = "nimm";
 	private static final String DINGE = "dinge";
 	private static final String LIST_INVENTAR = "inventar";
+	private static final String BENUTZE = "benutze";
 	private static final String HILFE = "hilfe";
 	private static final String BEENDEN = "exit";
 	
@@ -32,18 +35,22 @@ public class Game {
 		if (input.startsWith(DINGE)){
 			// Liste alle Dinge im aktuellen Raum:
 			return akt_room.listItems();
-		} else if (input.startsWith(NEHMEN)){
+		} 
+		// ------------------------------------
+		else if (input.startsWith(NEHMEN)){
 			// Nimm irgendwas.
 			String item_name = input.substring(NEHMEN.length()+1);
 			try {
 				BasicItem i = akt_room.getItem(item_name);
-				inventar.put(item_name, i);
+				inventar.put(i.getName().toUpperCase(), i);
 			} catch (ItemNotFoundException e) {
 				return "In diesem Raum gibt es kein "+item_name;
 			}
 			return "Du hast "+item_name+" aufgenommen.";
-		} else if (input.startsWith(LIST_INVENTAR)){
-			// Liste alle Gegenst�nde im Inventar
+		} 
+		// ------------------------------------
+		else if (input.startsWith(LIST_INVENTAR)){
+			// Liste alle Gegenstände im Inventar
 			StringBuilder b = new StringBuilder();
 			b.append("Dinge in deinem Inventar:\n");
 			if (inventar.size() == 0) return "Dein Inventar ist leer";
@@ -51,17 +58,42 @@ public class Game {
 				b.append( "* "+item.getValue().getName()+"\n" );
 			}
 			return b.toString();
-		} else if (input.startsWith(BEENDEN)){
+		} 
+		// ------------------------------------
+		else if (input.startsWith(BENUTZE)){
+			// Benutze einen Gegenstand aus dem Inventar
+			String[] befehl = input.split(" ");
+			if (inventar.containsKey(befehl[1].toUpperCase()) && 
+					inventar.containsKey(befehl[3].toUpperCase())){
+				try {
+					BasicEvent e = inventar.get( befehl[1].toUpperCase() )
+						.use( inventar.get(befehl[3].toUpperCase()) );
+					// Führe Event-Aktionen durch:
+					e.doEvent();
+					return e.getEventMessage();
+				} catch (CantUseItemException e) {
+					return e.getMessage();
+				}
+			} else {
+				return "In deinem Inventar befindet sich kein "+befehl[1]+ "/"+befehl[3];
+			}
+		} 
+		// ------------------------------------
+		else if (input.startsWith(BEENDEN)){
 			// Beende das Spiel
 			this.isPlaying = false;
 			return "Spiel wird beendet...";
-		} else if (input.startsWith(HILFE)){
+		} 
+		// ------------------------------------
+		else if (input.startsWith(HILFE)){
 			// Ausgabe aller Befehle
 			return DINGE+" <> Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" <> Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" <> Listet alle Gegenstände im Inventar auf\n" +
 					BEENDEN+" <> Beendet das Spiel";
-		} else {
+		} 
+		// ------------------------------------
+		else {
 			return input+" ist kein gültiger Befehl.";
 		}
 	}

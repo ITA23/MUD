@@ -2,18 +2,20 @@ package ita23.projekt.mud.rooms.implementations;
 
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.implementations.Blutwurst;
+import ita23.projekt.mud.items.implementations.Gummiente;
+import ita23.projekt.mud.items.implementations.Schwarzpulver;
+import ita23.projekt.mud.items.implementations.Seil;
 import ita23.projekt.mud.rooms.BasicRoom;
 
 public class StartRoom extends BasicRoom{
 	
-	public StartRoom(){
-		this.initialisieren();
-	}
-
 	@Override
 	public void initialisieren() {
-		this.dinge = new BasicItem[1];
+		this.dinge = new BasicItem[4];
 		dinge[0] = new Blutwurst();
+		dinge[1] = new Gummiente();
+		dinge[2] = new Schwarzpulver();
+		dinge[3] = new Seil();
 	}
 
 	@Override

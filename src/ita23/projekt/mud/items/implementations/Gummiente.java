@@ -4,19 +4,17 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
-public class Blutwurst extends BasicItem{
+public class Gummiente extends BasicItem{
 
 	@Override
 	public String getName() {
-		return "Blutwurst";
+		return "Gummiente";
 	}
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		if (item.getClass() == Gummiente.class){
-			throw new CantUseItemException("ZeitRafa war sich nicht sicher ob man die Ente fütter müsse...");
-		}
-		throw new CantUseItemException("Kann "+item.getName()+" nicht mit "+this.getName()+" benutzen!");
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
