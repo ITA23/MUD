@@ -1,10 +1,10 @@
 package ita23.projekt.mud.rooms.implementations;
 
 import ita23.projekt.mud.items.BasicItem;
-import ita23.projekt.mud.items.implementations.Blutwurst;
-import ita23.projekt.mud.items.implementations.Gummiente;
-import ita23.projekt.mud.items.implementations.Schwarzpulver;
-import ita23.projekt.mud.items.implementations.Seil;
+import ita23.projekt.mud.items.implementations.room1.Blutwurst;
+import ita23.projekt.mud.items.implementations.room1.Gummiente;
+import ita23.projekt.mud.items.implementations.room1.Schwarzpulver;
+import ita23.projekt.mud.items.implementations.room1.Seil;
 import ita23.projekt.mud.rooms.BasicRoom;
 
 public class StartRoom extends BasicRoom{

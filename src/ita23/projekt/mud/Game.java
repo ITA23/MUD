@@ -27,6 +27,7 @@ public class Game {
 	private static final String STORY = "story";
 	private static final String HILFE = "hilfe";
 	private static final String BEENDEN = "exit";
+	/** Signalawörter für feste Items */
 	private static final String SELBST = "selbst";
 	private static final String TUER = "tuer";
 	
@@ -116,7 +117,7 @@ public class Game {
 			return DINGE+" \t\t Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" \t\t Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" \t Listet alle Gegenstände im Inventar auf\n" +
-					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"Tür\" und \"Selbst\" benuzt werden.\n"+
+					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tuer\" und \"selbst\" benuzt werden.\n"+
 					STORY+" \t\t Zeigt die Story zum aktuellen Raum erneut an.\n"+
 					BEENDEN+" \t\t Beendet das Spiel";
 		} 
