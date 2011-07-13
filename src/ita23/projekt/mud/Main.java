@@ -33,7 +33,7 @@ public class Main {
 	}
 	
 	private void input(){
-		System.out.print("> ");
+		System.out.print("\n> ");
 	}
 	
 	public static void main(String[] args){

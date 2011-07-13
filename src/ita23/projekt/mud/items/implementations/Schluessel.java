@@ -7,19 +7,17 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.implementations.special.Tuer;
 import ita23.projekt.mud.rooms.WahrheitsRaum;
 
-public class Sprengsatz extends BasicItem{
+public class Schluessel extends BasicItem{
 
 	@Override
 	public String getName() {
-		return "Sprengsatz";
+		return "Schluessel";
 	}
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
 		if (item.getClass() == Tuer.class){
-			String mess = "SlowMo stoppt die Zeit damit die Bombe gefahrlos gezündet und die beiden sich vor " +
-					"der Explusion in Sicherheit bringen können. Die Kraft der Explosion reist die Türe aus " +
-					"den Angeln und öffnet den Weg in den nächsten Raum.";
+			String mess = "ZeitRaffa öffnet die Schwere Massivholztür mit dem Schlüssel.";
 			return new NextRoomEvent(mess, new WahrheitsRaum());
 		}
 		throw new CantUseItemException(getName(), item.getName());
