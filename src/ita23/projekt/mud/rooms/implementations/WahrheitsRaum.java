@@ -13,7 +13,8 @@ public class WahrheitsRaum extends BasicRoom{
 
 	@Override
 	public String getStory() {
-		return "-- Die Wahrheit über Prof. Dr. NicoX --";
+		return "-- Die Wahrheit über Prof. Dr. NicoX --\n" +
+				"";
 	}
 
 }
