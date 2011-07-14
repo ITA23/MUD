@@ -18,6 +18,12 @@ Was funktioniert bereits:
 
 ## Entwicklungs Tagebuch ##
 
+### Tag 4 ###
+Der vierte Tag vom Epischen Projekt
+
+* Der Prolog und ein Teil der Hauptstory wurden erstellt
+* Eine eigene Konsole wurde geschrieben 
+
 ### Tag 3 ###
 Der dritte Tag zog ins Land und brachte folgendes mit sich:
 
