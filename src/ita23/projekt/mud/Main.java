@@ -17,8 +17,7 @@ public class Main {
 			ps = new PrintStream(System.out, true, "UTF-8");
 		} catch (UnsupportedEncodingException e) {}
 		// Prolog:
-		pl("\n\nInspector SlowMo und Detective ZeitRaffa - Nico's Rache\n" +
-			"--------------");
+		pl("\n\nInspector SlowMo und Detective ZeitRaffa - Nico's Rache\n");
 		// Starte das Spiel:
 		loop();
 	}
