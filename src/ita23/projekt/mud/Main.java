@@ -96,6 +96,8 @@ public class Main implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		out.append( game.parse(in.getText())+"\n\n" );
 		in.setText("");
+		// Auto-Scroll:
+		out.setCaretPosition(out.getText().length());
 	}
 	
 	public static void main(String[] args){

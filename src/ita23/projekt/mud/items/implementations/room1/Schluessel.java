@@ -16,7 +16,7 @@ public class Schluessel extends BasicItem{
 
 	@Override
 	public String getName() {
-		return "Schluessel";
+		return "Schlüssel";
 	}
 
 	@Override

@@ -15,6 +15,7 @@ Was funktioniert bereits:
 * Items können miteinander kombiniert werden.
 * Rätsel können auf mehrere Arten gelöst werden
 * Es gibt mehrere Räume
+* Support für Umlaute dank eigener Konsole
 
 ## Entwicklungs Tagebuch ##
 
@@ -22,7 +23,9 @@ Was funktioniert bereits:
 Der vierte Tag vom Epischen Projekt
 
 * Der Prolog und ein Teil der Hauptstory wurden erstellt
-* Eine eigene Konsole wurde geschrieben 
+* Eine eigene Konsole wurde erstellt (Swing)
+* Dokumentation aller Klassen wurde hinzugefügt
+* Konsole verwendet nun Auto-Scroll
 
 ### Tag 3 ###
 Der dritte Tag zog ins Land und brachte folgendes mit sich:
