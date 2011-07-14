@@ -1,15 +1,21 @@
 package ita23.projekt.mud;
 
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class Main {
 	
 	private Scanner in;
 	private Game game;
+	private PrintStream ps;
 	
 	private Main(){
 		in = new Scanner(System.in);
 		game = Game.getInstance();
+		try {
+			ps = new PrintStream(System.out, true, "UTF-8");
+		} catch (UnsupportedEncodingException e) {}
 		// Prolog:
 		pl("\n\nInspector SlowMo und Detective ZeitRaffa - Nico's Rache\n" +
 			"--------------");
@@ -29,7 +35,7 @@ public class Main {
 	}
 	
 	private void pl(String in){
-		System.out.println(in);
+		ps.println(in);
 	}
 	
 	private void input(){
