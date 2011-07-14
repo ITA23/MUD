@@ -7,6 +7,11 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.implementations.special.Tuer;
 import ita23.projekt.mud.rooms.implementations.WahrheitsRaum;
 
+/**
+ * Kann aus zwei Items in Raum 1 kombiniert werden.
+ * @author Lukas Knuth
+ *
+ */
 public class Sprengsatz extends BasicItem{
 
 	@Override

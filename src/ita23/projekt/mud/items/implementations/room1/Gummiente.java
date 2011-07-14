@@ -4,6 +4,11 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Eine Gummiente aus dem ersten Raum.
+ * @author Lukas Knuth
+ *
+ */
 public class Gummiente extends BasicItem{
 
 	@Override
@@ -13,8 +18,7 @@ public class Gummiente extends BasicItem{
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new CantUseItemException(getName(), item.getName());
 	}
 
 }

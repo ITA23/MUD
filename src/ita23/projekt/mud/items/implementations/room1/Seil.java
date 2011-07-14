@@ -5,6 +5,11 @@ import ita23.projekt.mud.events.implementations.ItemCombineEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Ein Seil, das sich in Raum 1 finden lässt.
+ * @author Lukas Knuth
+ *
+ */
 public class Seil extends BasicItem{
 
 	@Override

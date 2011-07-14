@@ -5,6 +5,11 @@ import ita23.projekt.mud.events.implementations.ItemCombineEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Schwarzpulver, welches in Raum 1 gefunden werden kann.
+ * @author Lukas Knuth
+ *
+ */
 public class Schwarzpulver extends BasicItem{
 
 	@Override

@@ -4,6 +4,13 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Repräsentiert den Spieler selbst und wird benutzt,
+ *  um Items mit dem Spieler bzw. der Spielfigur zu
+ *  kombinieren.
+ * @author Lukas Knuth
+ *
+ */
 public class Selbst extends BasicItem{
 
 	public Selbst(){

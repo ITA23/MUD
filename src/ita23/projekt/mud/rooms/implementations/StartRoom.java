@@ -7,6 +7,11 @@ import ita23.projekt.mud.items.implementations.room1.Schwarzpulver;
 import ita23.projekt.mud.items.implementations.room1.Seil;
 import ita23.projekt.mud.rooms.BasicRoom;
 
+/**
+ * Der Start-Raum, in welchem das Spiel beginnt.
+ * @author Lukas Knuth, Rafa Marques
+ *
+ */
 public class StartRoom extends BasicRoom{
 	
 	@Override
@@ -28,7 +33,7 @@ public class StartRoom extends BasicRoom{
 				" ZeitRaffa läuft dahin und sucht nach Nicock er findet ihn aber nicht.\n" +
 				"Nach einer langen Suche beschließen die beiden zurück zufliegen als sie gerade abgehoben " +
 				"kommt Nicock und sieht wie beide wegfliegen. Er schwört ewige Rachen an den beiden und an der ESS.\n" +
-				"\n\n>------ Hauptstory ------<\n" +
+				"\n>------ Hauptstory ------<\n" +
 				"1995 Transsilvanien(Rumänien)\nInspector SlowMo und Detective ZeitRaffa kommen in " +
 				"Transsilvanien an es ist eine sehr ruhige Stadt es sind wenig Menschen auf der Straße.\n" +
 				"Sie fahren zum letzten bekannten Aufenthaltsort von Agent Nicockn\n" +

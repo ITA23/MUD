@@ -7,6 +7,11 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.implementations.special.Tuer;
 import ita23.projekt.mud.rooms.implementations.WahrheitsRaum;
 
+/**
+ * Schlüssel welcher den weg zu Raum 2 öffnet
+ * @author Lukas Knuth
+ *
+ */
 public class Schluessel extends BasicItem{
 
 	@Override

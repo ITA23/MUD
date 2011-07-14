@@ -6,6 +6,11 @@ import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.implementations.special.Selbst;
 
+/**
+ * Eine Blutwurst, welche im ersten Level gefunden werden kann.
+ * @author Lukas Knuth
+ *
+ */
 public class Blutwurst extends BasicItem{
 
 	@Override

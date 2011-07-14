@@ -12,24 +12,41 @@ import ita23.projekt.mud.rooms.implementations.StartRoom;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Parst die Eingabe des Benutzers und verwaltet das Spiel
+ * (Inventar, Befehle, etz).
+ * @author Lukas Knuth
+ *
+ */
 public class Game {
 	
+	/** Instanz der eigenen Klasse (Singleton) */
 	private static Game g;
+	/** Das Inventar des Spielers */
 	public Map<String, BasicItem> inventar;
-	private boolean isPlaying;
 	/** Aktueller Raum */
 	private BasicRoom akt_room;
-	/** Signalwörter für Aktionen */
+	
+	/** Befehl zum Nehemen eines Gegenstandes */
 	private static final String NEHMEN = "nimm";
+	/** Befehl zum auflisten aller Dinge im aktuellen Raum */
 	private static final String DINGE = "dinge";
+	/** Befehl zum auflisten aller Gegenstände im eigenen Inventar */
 	private static final String LIST_INVENTAR = "inventar";
+	/** Befehl zum benutzt zwei Gegenstände miteinander */
 	private static final String BENUTZE = "benutze";
+	/** Befehl um die Story zum aktuellen Raum erneut aus zu geben */
 	private static final String STORY = "story";
+	/** Befehl zum anzeigen aller Befehle und ihrer Wirkung */
 	private static final String HILFE = "hilfe";
-	private static final String BEENDEN = "exit";
-	/** Signalawörter für feste Items */
+	
+	/** Signalwort für die Benutzung eines Items mit dem Spieler selbst */
 	private static final String SELBST = "selbst";
-	private static final String TUER = "tuer";
+	/** Signalwort für die Benutzung eines Gegenstandes mit der Tür zum 
+	 * nächsten Raum.
+	 */
+	private static final String TUER = "tür";
+	
 	
 	/**
 	 * Parst den input des Benutzers und gibt die Nachricht zurück.
@@ -101,12 +118,6 @@ public class Game {
 			}
 		} 
 		// ------------------------------------
-		else if (input.startsWith(BEENDEN)){
-			// Beende das Spiel
-			this.isPlaying = false;
-			return "Spiel wird beendet...";
-		} 
-		// ------------------------------------
 		else if (input.startsWith(STORY)){
 			// Story nochmla lesen:
 			return akt_room.getStory();
@@ -117,9 +128,8 @@ public class Game {
 			return DINGE+" \t\t Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" \t\t Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" \t Listet alle Gegenstände im Inventar auf\n" +
-					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tuer\" und \"selbst\" benuzt werden.\n"+
-					STORY+" \t\t Zeigt die Story zum aktuellen Raum erneut an.\n"+
-					BEENDEN+" \t\t Beendet das Spiel";
+					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tür\" und \"selbst\" benuzt werden.\n"+
+					STORY+" \t\t Zeigt die Story zum aktuellen Raum erneut an.\n";
 		} 
 		// ------------------------------------
 		else {
@@ -150,16 +160,6 @@ public class Game {
 		inventar = new HashMap<String, BasicItem>();
 		// Setz den aktuellen Raum:
 		akt_room = new StartRoom();
-		// Starte das Spiel:
-		this.isPlaying = true;
-	}
-	
-	/**
-	 * Git "true" zurück wenn das Spiel noch läuft.
-	 * @return Ob das Spiel noch läuft.
-	 */
-	public boolean isPlaying(){
-		return isPlaying;
 	}
 	
 	/**

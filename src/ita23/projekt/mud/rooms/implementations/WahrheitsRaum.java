@@ -3,6 +3,11 @@ package ita23.projekt.mud.rooms.implementations;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.rooms.BasicRoom;
 
+/**
+ * Der zweite Raum des Spiels.
+ * @author Lukas Knuth
+ *
+ */
 public class WahrheitsRaum extends BasicRoom{
 
 	@Override
