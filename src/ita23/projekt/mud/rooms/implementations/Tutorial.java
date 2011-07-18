@@ -1,7 +1,7 @@
 package ita23.projekt.mud.rooms.implementations;
 
 import ita23.projekt.mud.items.BasicItem;
-import ita23.projekt.mud.items.tutorial.Magazin;
+import ita23.projekt.mud.items.implementations.tutorial.Magazin;
 import ita23.projekt.mud.rooms.BasicRoom;
 
 /**
