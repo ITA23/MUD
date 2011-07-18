@@ -60,12 +60,12 @@ public abstract class BasicRoom {
 	 */
 	public String listItems(){
 		StringBuilder b = new StringBuilder();
-		String nachricht = "Gegenstände in diesem Raum:\n";
+		String nachricht = "Gegenstände in diesem Raum:\n\n";
 		for (BasicItem item : dinge){
-			if (!item.inInventar()) b.append("\n* "+item.getName());
+			if (!item.inInventar()) b.append("\t* "+item.getName());
 		}
 		if (b.length() == nachricht.length()) return "Es befinden sich keine Gegenstände in diesem Raum";
-		return b.toString();
+		return nachricht + b.toString() + "\n";
 	}
 
 }

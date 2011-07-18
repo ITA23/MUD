@@ -55,7 +55,7 @@ public class Main implements ActionListener{
 		// Box:
 		out = new JTextArea(30, 80);
 		out.setBackground(Color.BLACK);
-		out.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		out.setFont(new Font("Monospaced", Font.PLAIN, 16));
 		out.setForeground(Color.GREEN);
 		out.setEditable(false);
 		out.setLineWrap(true);

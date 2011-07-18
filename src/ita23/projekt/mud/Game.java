@@ -6,8 +6,9 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.ItemNotFoundException;
 import ita23.projekt.mud.items.implementations.special.Selbst;
 import ita23.projekt.mud.items.implementations.special.Tuer;
+import ita23.projekt.mud.items.tutorial.MP40;
 import ita23.projekt.mud.rooms.BasicRoom;
-import ita23.projekt.mud.rooms.implementations.StartRoom;
+import ita23.projekt.mud.rooms.implementations.Tutorial;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,8 @@ public class Game {
 	public Map<String, BasicItem> inventar;
 	/** Aktueller Raum */
 	private BasicRoom akt_room;
+	/** Bestimmt, ob das Spiel im Tutorial-Modus ist */
+	private boolean isTutorial;
 	
 	/** Befehl zum Nehemen eines Gegenstandes */
 	private static final String NEHMEN = "nimm";
@@ -56,8 +59,16 @@ public class Game {
 	public String parse(String input){
 		if (input.startsWith(DINGE)){
 			// Liste alle Dinge im aktuellen Raum:
-			return akt_room.listItems();
-		} 
+			String ret = akt_room.listItems();
+			if (isTutorial){
+				ret += "\n"+
+				"> \"Sehr gut, der Private davorn hat noch eins. Nehmen sie es, er braucht es nicht mehr!\"\n\n "+
+				"  Um einen Gegenstand benutzen zu können nehmen Sie ihn auf um ihn in Ihr Inventar zu packen. " +
+				"Benutzen Sie dazu den \"nimm\"-Befehl mit dem Namen des Items: " +
+				"\"Nimm Magazin\" Die Groß- und Kleinschreibung spielt hierbei keine Rolle.";
+			}
+			return ret;
+		}
 		// ------------------------------------
 		else if (input.startsWith(NEHMEN)){
 			// Checken ob der Befehl richtig eingegeben wurde:
@@ -72,18 +83,33 @@ public class Game {
 			} catch (ItemNotFoundException e) {
 				return "In diesem Raum gibt es kein "+item_name;
 			}
-			return "Du hast "+item_name+" aufgenommen.";
+			// Gib Nachricht zurück
+			String msg = "Du hast "+item_name+" aufgenommen.";
+			if (isTutorial){
+				msg += "\n\n> \"Glotzen sie es nicht an, laden sie nach!\" \n\n"+
+				"  Sie könne das \"Magazin\" aus ihrem Inventar mit ihrer \"MP40\" benutzen. \n" +
+				"Nutzen Sie dazu den \"benutze\"-Befehl: \"benutze Magazin mit MP40\""; 
+			}
+			return msg;
 		} 
 		// ------------------------------------
 		else if (input.startsWith(LIST_INVENTAR)){
 			// Liste alle Gegenstände im Inventar
 			StringBuilder b = new StringBuilder();
-			b.append("Dinge in deinem Inventar:\n");
+			b.append("Dinge in deinem Inventar:\n\n");
 			if (inventar.size() == 0) return "Dein Inventar ist leer";
 			for ( Map.Entry<String, BasicItem> item : inventar.entrySet() ){
-				b.append( "\n* "+item.getValue().getName() );
+				b.append( "\t* "+item.getValue().getName() );
 			}
-			return b.toString();
+			// Gib Ergebniss zurück
+			String msg = b.toString()+"\n";
+			if (isTutorial){
+				msg += "\n\n> \"Verdammt, ich hab auch keins mehr. " +
+						"Vielleicht liegt eins hier rum, schauen sie mal nach!\" \n\n"+
+						" Um Dinge welche sie nehmen könne in ihrer Umgebung zu finden, " +
+						"benutzen Sie den \"dinge\"-Befehl";
+			}
+			return msg;
 		} 
 		// ------------------------------------
 		else if (input.startsWith(BENUTZE)){
@@ -125,16 +151,32 @@ public class Game {
 		// ------------------------------------
 		else if (input.startsWith(HILFE)){
 			// Ausgabe aller Befehle
-			return DINGE+" \t\t Listet alle Dinge im aktuellen Raum auf\n" +
+			String msg = DINGE+" \t\t Listet alle Dinge im aktuellen Raum auf\n" +
 					NEHMEN+" \t\t Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" \t Listet alle Gegenstände im Inventar auf\n" +
 					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tür\" und \"selbst\" benuzt werden.\n"+
 					STORY+" \t\t Zeigt die Story zum aktuellen Raum erneut an.\n";
+			if (isTutorial){
+				msg += "\n> \"Private! Soldat! Kommen sie zu sich, wir haben eine Mission zu erfüllen!\" \n" +
+				"> \"Ja... Jawohl Sir!\" \n"+
+				"> \"Beruhigen sie sich, es ist noch alles dran, sie können weiter kämpfen. " +
+						"Ihre MP40 ist leer geschossen, sehen sie mal nach ob sie noch ein Magazin haben!\" \n" +
+				"\nUm eine Liste aller Dinge die Sie an sich tragen zu sehen, kann der Befehl \"inventar\" verwendet werden.";
+			}
+			return msg;
 		} 
 		// ------------------------------------
 		else {
 			return input+" ist kein gültiger Befehl. Benutze \""+HILFE+"\" für eine Auflistung aller Befehle.";
 		}
+	}
+	
+	/**
+	 * Seztz den Modus des Spiels auf normal und verlässt
+	 * das Tutorial.
+	 */
+	public void leaveTutorial(){
+		this.isTutorial = false;
 	}
 	
 	/**
@@ -158,8 +200,10 @@ public class Game {
 	 */
 	private void initialize(){
 		inventar = new HashMap<String, BasicItem>();
+		isTutorial = true;
 		// Setz den aktuellen Raum:
-		akt_room = new StartRoom();
+		akt_room = new Tutorial();
+		inventar.put(new MP40().getName().toUpperCase(), new MP40());
 	}
 	
 	/**

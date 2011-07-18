@@ -1,4 +1,2 @@
 # Exclude the bin
 bin/
-# Exclude test-directory for builds
-TEST/
