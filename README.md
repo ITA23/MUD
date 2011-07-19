@@ -17,8 +17,14 @@ Was funktioniert bereits:
 * Es gibt mehrere Räume
 * Support für Umlaute dank eigener Konsole
 * Tutorial zur Einleitung in das Spiel
+* Befehle können einfach erneut ausgeführt werden
 
 ## Entwicklungs Tagebuch ##
+
+### Tag 6 ###
+Eine Schwere Mutivationsgrube lies nur den folgenden Fortschritt zu:
+
+* Eingegebene Befehle werden in einem Stapel gesammelt und können nun wieder verwendet werden.
 
 ### Tag 5 ###
 Nach dem Wochenende wurd heute wieder weiter gearbeitet. Folgende Erzeugnisse kahmen dabei 
