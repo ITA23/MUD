@@ -2,6 +2,12 @@ package ita23.projekt.mud;
 
 import java.util.ArrayList;
 
+/**
+ * Sammelt die letzten vom Benutzer eingegebenen
+ *  Befehle und kann sie wieder zurückgeben
+ * @author Lukas Knuth, Rafa Marques
+ *
+ */
 public class CommandStack {
 	
 	private ArrayList<String> stack;
