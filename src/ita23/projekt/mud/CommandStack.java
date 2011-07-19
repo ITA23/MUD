@@ -10,16 +10,26 @@ import java.util.ArrayList;
  */
 public class CommandStack {
 	
+	/** ArrayList welche die letzten Befehle sammelt */
 	private ArrayList<String> stack;
+	/** Aktuelle position in der Liste */
 	private int position;
 	
+	/**
+	 * Erstellt den Command-Stack, welcher die history
+	 *  der eingegebenen befehle speichert.
+	 */
 	public CommandStack(){
 		stack = new ArrayList<String>();
 		stack.add("");
 		position = 1;
 	}
 	
-	// Wenn Pfeiltaste nach unten gedrückt
+	/**
+	 * Gibt den (wenn möglich) nächsten eingegebenen
+	 *  Befehl des Benutzers zurück.
+	 * @return Das nächste Element in der Liste
+	 */
 	public String getNext(){
 		position++;
 		if (position < 0){
@@ -32,7 +42,11 @@ public class CommandStack {
 		return stack.get(position);
 	}
 	
-	// Wenn Pfeiltaste nach oben gedrückt
+	/**
+	 * Gibt den vorherigen Befehl des Benutzers
+	 *  zurück
+	 * @return Der vorherige Befehl in der Liste
+	 */
 	public String getPrevous(){
 		position--;
 		if (position < 1){
@@ -42,6 +56,12 @@ public class CommandStack {
 		return stack.get(position);
 	}
 	
+	/**
+	 * Fügt einen neuen Befehl in die Liste
+	 *  ein.
+	 * @param s Der eingegebene Befehl als
+	 *  String.
+	 */
 	public void add(String s){
 		stack.add(s);
 		position = stack.size();
