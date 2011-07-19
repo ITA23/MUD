@@ -13,7 +13,7 @@ public class CommandStack {
 		position = 1;
 	}
 	
-	// Wenn Pfeiltaste nach unten gedrückt
+	// Wenn Pfeiltaste nach unten gedrückte
 	public String getNext(){
 		position++;
 		if (position < 0){
