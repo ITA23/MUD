@@ -13,26 +13,32 @@ public class CommandStack {
 	}
 	
 	public String getNext(){
-		position++;
-		if (position > stack.size()){
-			position--;
-			return stack.get( stack.size() );
+		if (stack.size() == 0){
+			return "";
 		}
+		if (position > (stack.size() -1) ){
+			position = stack.size();
+			return "";
+		}
+		position++;
 		return stack.get(position);
 	}
 	
 	public String getPrevous(){
-		position--;
+		if (stack.size() == 0){
+			return "";
+		}
 		if (position < 0){
-			position++;
+			position = 0;
 			return stack.get( 0 );
 		}
+		position--;
 		return stack.get(position);
 	}
 	
 	public void add(String s){
 		stack.add(s);
-		position = 0;
+		position = stack.size();
 	}
 
 }
