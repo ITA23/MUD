@@ -10,7 +10,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,14 +38,14 @@ public class Main implements ActionListener, KeyListener{
 	private JButton send;
 	
 	/** Stack der letzten eingegebenen Befehle */
-	private Stack<String> history;
+	private CommandStack history;
 	
 	/**
 	 * Startet das Spiel und erstellt das GUI
 	 */
 	private Main(){
 		game = Game.getInstance();
-		history = new Stack<String>();
+		history = new CommandStack();
 		
 		// Mache GUI:
 		makeGUI();
@@ -105,7 +104,7 @@ public class Main implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent arg0) {
 		out.append( game.parse(in.getText())+"\n\n" );
 		// Befehl in den Stack:
-		history.push(in.getText());
+		history.add(in.getText());
 		in.setText("");
 		// Auto-Scroll:
 		out.setCaretPosition(out.getText().length());
@@ -119,10 +118,10 @@ public class Main implements ActionListener, KeyListener{
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP){
 			// Letzter Befehl laden:
-			in.setText( history.peek() );
+			in.setText( history.getPrevous() );
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN){
 			// Vorheriger Befehl:
-			
+			in.setText( history.getNext() );
 		}
 	}
 
