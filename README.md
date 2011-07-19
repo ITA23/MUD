@@ -16,8 +16,16 @@ Was funktioniert bereits:
 * Rätsel können auf mehrere Arten gelöst werden
 * Es gibt mehrere Räume
 * Support für Umlaute dank eigener Konsole
+* Tutorial zur Einleitung in das Spiel
 
 ## Entwicklungs Tagebuch ##
+
+### Tag 5 ###
+Nach dem Wochenende wurd heute wieder weiter gearbeitet. Folgende Erzeugnisse kahmen dabei 
+zu tage:
+
+* Ein Tutorial wurde eingefügt
+* Die Story wurde grundliegend überarbeitet
 
 ### Tag 4 ###
 Der vierte Tag vom Epischen Projekt

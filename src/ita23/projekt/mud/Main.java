@@ -6,8 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,7 +25,7 @@ import javax.swing.JTextField;
  * @author Lukas Knuth
  *
  */
-public class Main implements ActionListener{
+public class Main implements ActionListener, KeyListener{
 	
 	/** Instanz des Spiels */
 	private Game game;
@@ -35,11 +38,16 @@ public class Main implements ActionListener{
 	/** Button zum absenden eines Befehls */
 	private JButton send;
 	
+	/** Stack der letzten eingegebenen Befehle */
+	private Stack<String> history;
+	
 	/**
 	 * Startet das Spiel und erstellt das GUI
 	 */
 	private Main(){
 		game = Game.getInstance();
+		history = new Stack<String>();
+		
 		// Mache GUI:
 		makeGUI();
 		// Zeige Epilog an:
@@ -70,7 +78,8 @@ public class Main implements ActionListener{
 			public void windowOpened( WindowEvent e ){
 				in.requestFocus();
 			}
-		}); 
+		});
+		in.addKeyListener(this);
 		send = new JButton("do");
 		send.addActionListener(this);
 		f.getRootPane().setDefaultButton(send);
@@ -95,6 +104,8 @@ public class Main implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		out.append( game.parse(in.getText())+"\n\n" );
+		// Befehl in den Stack:
+		history.push(in.getText());
 		in.setText("");
 		// Auto-Scroll:
 		out.setCaretPosition(out.getText().length());
@@ -103,5 +114,19 @@ public class Main implements ActionListener{
 	public static void main(String[] args){
 		new Main();
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP){
+			// Letzter Befehl laden:
+			in.setText( history.peek() );
+		} else if (e.getKeyCode() == KeyEvent.VK_DOWN){
+			// Vorheriger Befehl:
+			
+		}
+	}
+
+	@Override public void keyPressed(KeyEvent e) {}
+	@Override public void keyTyped(KeyEvent e) {}
 
 }
