@@ -9,30 +9,36 @@ public class CommandStack {
 	
 	public CommandStack(){
 		stack = new ArrayList<String>();
-		position = 0;
+		stack.add("");
+		position = 1;
 	}
 	
+	// Wenn Pfeiltaste nach unten gedrückt
 	public String getNext(){
 		position++;
-		if (position > stack.size()){
-			position--;
-			return stack.get( stack.size() );
+		if (position < 0){
+			position = 0;
+			return stack.get( 0 );
+		} else if (position > (stack.size() - 1)) {
+			position = (stack.size());
+			return stack.get(0);
 		}
 		return stack.get(position);
 	}
 	
+	// Wenn Pfeiltaste nach oben gedrückt
 	public String getPrevous(){
 		position--;
-		if (position < 0){
-			position++;
-			return stack.get( 0 );
-		}
+		if (position < 1){
+			position = 1;
+			return stack.get( 1 );
+		} 
 		return stack.get(position);
 	}
 	
 	public void add(String s){
 		stack.add(s);
-		position = 0;
+		position = stack.size();
 	}
 
 }
