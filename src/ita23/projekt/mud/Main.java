@@ -46,6 +46,7 @@ public class Main implements ActionListener, KeyListener{
 	private Main(){
 		game = Game.getInstance();
 		history = new CommandStack();
+		
 		// Mache GUI:
 		makeGUI();
 		// Zeige Epilog an:
@@ -56,7 +57,7 @@ public class Main implements ActionListener, KeyListener{
 	 * Erstellt das GUI und macht es sichtbar.
 	 */
 	public void makeGUI(){
-		f = new JFrame("Jimmy Presgo und die Schatulle des Lichts");
+		f = new JFrame("Inspector SlowMo und Detective ZeitRaffa");
 		f.setLayout(new BorderLayout());
 		// Box:
 		out = new JTextArea(30, 80);
