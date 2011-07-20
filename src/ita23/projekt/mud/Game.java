@@ -39,6 +39,8 @@ public class Game {
 	private static final String LIST_INVENTAR = "inventar";
 	/** Befehl zum benutzt zwei Gegenstände miteinander */
 	private static final String BENUTZE = "benutze";
+	/** Befehl-trenner für den benutze-Befehl */
+	private static final String MIT = "mit";
 	/** Befehl zum unersuchen eines bestimmten Gegenstandes */
 	private static final String UNTERSUCHE = "untersuche";
 	/** Befehl um die Story zum aktuellen Raum erneut aus zu geben */
@@ -121,25 +123,29 @@ public class Game {
 		// ------------------------------------
 		else if (input.startsWith(BENUTZE)){
 			// Benutze einen Gegenstand aus dem Inventar
-			String[] befehl = input.split(" ");
-			// Teste ob valider befehl:
-			if (befehl.length != 4){
+			String item1 = "";
+			String item2 = "";
+			try {
+				int offset = input.indexOf(MIT)-1;
+				item1 = input.substring(BENUTZE.length()+1, offset);
+				item2 = input.substring(BENUTZE.length() + item1.length() + MIT.length() + 3);
+			} catch (IndexOutOfBoundsException e){
 				return "Die Syntax lautet: \""+BENUTZE+" [item] mit [item]\"";
 			}
-			if (inventar.containsKey(befehl[1].toUpperCase()) ){
+			if (inventar.containsKey(item1.toUpperCase()) ){
 				// Check ob selbst/tür oder item:
 				BasicItem tmp = null;
-				if ( inventar.containsKey(befehl[3].toUpperCase()) ){
-					tmp = inventar.get(befehl[3].toUpperCase());
-				} else if ( befehl[3].equalsIgnoreCase(SELBST) ){
+				if ( inventar.containsKey(item2.toUpperCase()) ){
+					tmp = inventar.get(item2.toUpperCase());
+				} else if ( item2.equalsIgnoreCase(SELBST) ){
 					tmp = new Selbst();
-				} else if ( befehl[3].equalsIgnoreCase(TUER) ){
+				} else if ( item2.equalsIgnoreCase(TUER) ){
 					tmp = new Tuer();
 				} else {
-					return "In deinem Inventar befindet sich kein "+befehl[1]+ "/"+befehl[3];
+					return "In deinem Inventar befindet sich kein "+item1+ "/"+item2;
 				}
 				try {
-					BasicEvent e = inventar.get( befehl[1].toUpperCase() ).use( tmp );
+					BasicEvent e = inventar.get( item1.toUpperCase() ).use( tmp );
 					// Führe Event-Aktionen durch:
 					e.doEvent();
 					return e.getEventMessage();
@@ -147,7 +153,7 @@ public class Game {
 					return e.getMessage();
 				}
 			} else {
-				return "In deinem Inventar befindet sich kein "+befehl[1]+ "/"+befehl[3];
+				return "In deinem Inventar befindet sich kein "+item1+ "/"+item2;
 			}
 		}
 		// ------------------------------------

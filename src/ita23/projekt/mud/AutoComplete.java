@@ -24,7 +24,6 @@ public class AutoComplete {
 		befehle.add("untersuchen");
 	}
 	
-	
 	/**
 	 * Eingabe wird übergeben und geguckt ob es einen Befehl gibt
 	 * @param eingabe vom Benutzer
