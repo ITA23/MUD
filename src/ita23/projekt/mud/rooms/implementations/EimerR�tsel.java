@@ -14,9 +14,10 @@ public class EimerRätsel extends BasicRoom{
 
 	@Override
 	public void initialisieren() {
-		this.dinge = new BasicItem[2];
+		this.dinge = new BasicItem[3];
 		dinge[0] = new Eimer3Lleer();
-		dinge[1] = new Wasserhahn();
+		dinge[1] = new Eimer5Lleer();
+		dinge[2] = new Wasserhahn();
 		System.out.println("hallo");
 	}
 

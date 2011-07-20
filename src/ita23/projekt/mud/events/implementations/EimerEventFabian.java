@@ -16,6 +16,7 @@ public class EimerEventFabian extends BasicEvent  {
 	private BasicItem i2;
 	/** Der neu gefüllte Eimer*/
 	private BasicItem nI;
+	private BasicItem nI2;
 	/** Angaben zum neuen Eimer*/
 	private String message;
 	/**
@@ -33,18 +34,28 @@ public class EimerEventFabian extends BasicEvent  {
 		this.message = message;
 		
 	}
+	
+	public EimerEventFabian(BasicItem item1, BasicItem item2, BasicItem newItem, BasicItem newItem2, String message){
+		super();
+		this.i1 = item1;
+		this.i2 = item2;
+		this.nI2=newItem2;
+		this.nI = newItem;
+		this.message = message;
+		
+	}
 
 	@Override
 	public String getEventMessage() {
 		// TODO Auto-generated method stub
-		return null;
+		return message;
 	}
 
 	@Override
 	public void doEvent() {
 		game.inventar.remove(i2.getName().toUpperCase());
 		game.inventar.put(nI.getName().toUpperCase(), nI);
-		
+		game.inventar.put(nI2.getName().toUpperCase(), nI);
 	}
 
 }

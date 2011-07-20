@@ -29,10 +29,10 @@ public class Wasserhahn extends BasicItem{
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		if (Wasserhahn.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entz�ndet.\n "+
-			"Die T�r �ffnet sich langsam mit lautem gequietsche...";
-			return new EimerEventFabian(new Wasserhahn(),new Eimer3Lleer(),new Eimer3L_voll(), "Hallo");
+		if (Eimer3Lleer.class == item.getClass()){
+			return new EimerEventFabian(this,item,new Eimer3L_voll(), "Hallo");
+		}else if (Eimer5Lleer.class == item.getClass()){
+			return new EimerEventFabian(this,item,new Eimer5Lvoll(), "Hallo");
 		}
 		throw new CantUseItemException(getName(), item.getName());
 	}

@@ -1,15 +1,16 @@
 package ita23.projekt.mud.items.implementations.EimerRaetzel;
 
 import ita23.projekt.mud.events.BasicEvent;
+import ita23.projekt.mud.events.implementations.EimerEventFabian;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
-public class Eimer3L_voll extends BasicItem{
+public class Eimer5Lvoll extends BasicItem{
 
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return "Eimer3Lvoll";
+		return "Eimer5Lvoll";
 	}
 
 	@Override
@@ -26,8 +27,11 @@ public class Eimer3L_voll extends BasicItem{
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		// TODO Auto-generated method stub
-		return null;
+		if (Eimer3Lleer.class == item.getClass()){
+			return new EimerEventFabian(item,this, new Eimer5Lmit2L(), new Eimer3L_voll(), "Hallo");
+		}
+		throw new CantUseItemException(getName(), item.getName());
 	}
+
 
 }

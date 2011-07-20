@@ -5,11 +5,11 @@ import ita23.projekt.mud.events.implementations.EimerEventFabian;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
-public class Eimer3Lleer extends BasicItem {
+public class Eimer5Lleer  extends BasicItem {
 
 	@Override
 	public String getName() {
-		return "Leerer 3L Eimer";
+		return "Leerer 5L Eimer";
 	}
 
 	@Override
@@ -27,8 +27,9 @@ public class Eimer3Lleer extends BasicItem {
 		if (Wasserhahn.class == item.getClass()){
 			String msg = "Sie haben mit der Fackel das Opferfeuer entz�ndet.\n "+
 			"Die T�r �ffnet sich langsam mit lautem gequietsche...";
-			return new EimerEventFabian(item,this,new Eimer3L_voll(), "Hallo");
+			return new EimerEventFabian(item,this, new Eimer5Lvoll(), "Hallo");
 		}
 		throw new CantUseItemException(getName(), item.getName());
 	}
+
 }

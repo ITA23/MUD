@@ -4,7 +4,7 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
-public class Eimer3L_voll extends BasicItem{
+public class Eimer5Lmit2L extends BasicItem{
 
 	@Override
 	public String getName() {
@@ -29,5 +29,6 @@ public class Eimer3L_voll extends BasicItem{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
