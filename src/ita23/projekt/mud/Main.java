@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,6 +15,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -42,6 +44,7 @@ public class Main implements ActionListener, KeyListener, DocumentListener {
 	/** Stack der letzten eingegebenen Befehle */
 	private CommandStack history;
 	
+	/** AutoComplete eingabe vom Benutzer vervollständigen */
 	private AutoComplete auto;
 	
 	/**
@@ -134,13 +137,14 @@ public class Main implements ActionListener, KeyListener, DocumentListener {
 	@Override public void keyPressed(KeyEvent e) {}
 	@Override public void keyTyped(KeyEvent e) {}
 
-	@Override
+	/** Eingaben vom user werden an AutoComplete gesendet und ausgegeben */
+	
 	public void changedUpdate(DocumentEvent e) {
 		String eingabe = in.getText();
 		int laenge = eingabe.length();
 		
 		if (laenge >= 3) {
-			System.out.println( auto.woerterChecken(eingabe));
+			System.out.println( auto.woerterChecken(eingabe) );
 		}
 	}
 
@@ -149,7 +153,7 @@ public class Main implements ActionListener, KeyListener, DocumentListener {
 		String eingabe = in.getText();
 		int laenge = eingabe.length();
 		
-		if (laenge >= 3) {
+		if (laenge >= 3) { 
 			System.out.println( auto.woerterChecken(eingabe) );
 		}
 	}
