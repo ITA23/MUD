@@ -5,6 +5,12 @@ import ita23.projekt.mud.events.implementations.EimerEventFabian;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Ein Teil des Unfertigen "Eimer-
+ *  Rätsel"
+ * @author Fabian Bottler
+ *
+ */
 public class Eimer3Lleer extends BasicItem {
 
 	@Override
@@ -25,9 +31,9 @@ public class Eimer3Lleer extends BasicItem {
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
 		if (Wasserhahn.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entz�ndet.\n "+
-			"Die T�r �ffnet sich langsam mit lautem gequietsche...";
-			return new EimerEventFabian(item,this,new Eimer3L_voll(), "Hallo");
+			String msg = "Sie haben mit der Fackel das Opferfeuer entzündet.\n "+
+			"Die Tür öffnet sich langsam mit lautem gequietsche...";
+			return new EimerEventFabian(item,this,new Eimer3L_voll(), msg);
 		}
 		throw new CantUseItemException(getName(), item.getName());
 	}

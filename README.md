@@ -30,6 +30,7 @@ in Privater Heimarbeit noch folgende Dinge realisiert:
 * Dinge, welche nicht aufgenommen werden können, können nun benutzt werden
 * Einige Fehler und kleinere Bugs wurden ausgebessert
 * Ein Abspann wurde angefügt
+* JavaDoc angefügt
 
 ### Tag 7 ###
 Ein paar grundliegende Änderungen und andere Sachen wurden auf den Letzten drücker

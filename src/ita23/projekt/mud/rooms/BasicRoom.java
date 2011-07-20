@@ -34,7 +34,7 @@ public abstract class BasicRoom {
 	
 	/**
 	 * Gibt die Story zu diesem Raum als String zurück.
-	 * @return
+	 * @return Die Geschichte zu diesem Raum als String.
 	 */
 	public abstract String getStory();
 	

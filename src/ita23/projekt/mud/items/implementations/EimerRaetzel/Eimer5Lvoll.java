@@ -5,23 +5,26 @@ import ita23.projekt.mud.events.implementations.EimerEventFabian;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Ein Teil des Unfertigen "Eimer-
+ *  Rätsel"
+ * @author Fabian Bottler
+ *
+ */
 public class Eimer5Lvoll extends BasicItem{
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Eimer5Lvoll";
 	}
 
 	@Override
 	public String getInspectString() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTakeable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

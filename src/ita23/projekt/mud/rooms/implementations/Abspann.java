@@ -3,6 +3,12 @@ package ita23.projekt.mud.rooms.implementations;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.rooms.BasicRoom;
 
+/**
+ * Abspann, welcher das (Temporäre) Ende
+ *  des Spiels darstellt.
+ * @author Lukas Knuth
+ *
+ */
 public class Abspann extends BasicRoom{
 
 	@Override

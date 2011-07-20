@@ -16,15 +16,17 @@ public class EimerEventFabian extends BasicEvent  {
 	private BasicItem i2;
 	/** Der neu gefüllte Eimer*/
 	private BasicItem nI;
+	/** Ein zweiter neuer Eimer */
 	private BasicItem nI2;
 	/** Angaben zum neuen Eimer*/
 	private String message;
+	
 	/**
 	 * Füllte den einen Eimer mit dem anderen
-	 * @param Der 3L Eimer
-	 * @param Der 5L eimer
-	 * @param Der neu gefüllte Eimer.
-	 * @param Angbe wie voll der Eimer ist.
+	 * @param item1 Der 3L Eimer
+	 * @param item2 Der 5L eimer
+	 * @param newItem Der neu gefüllte Eimer.
+	 * @param message Angbe wie voll der Eimer ist.
 	 */
 	public EimerEventFabian(BasicItem item1, BasicItem item2, BasicItem newItem, String message){
 		super();
@@ -35,6 +37,14 @@ public class EimerEventFabian extends BasicEvent  {
 		
 	}
 	
+	/**
+	 * Füllt Eimer
+	 * @param item1 Der 3L Eimer
+	 * @param item2 Der 5L eimer
+	 * @param newItem Der neu gefüllte Eimer.
+	 * @param newItem2 Der zweite neue Eimer.
+	 * @param message Angbe wie voll der Eimer ist.
+	 */
 	public EimerEventFabian(BasicItem item1, BasicItem item2, BasicItem newItem, BasicItem newItem2, String message){
 		super();
 		this.i1 = item1;
@@ -47,7 +57,6 @@ public class EimerEventFabian extends BasicEvent  {
 
 	@Override
 	public String getEventMessage() {
-		// TODO Auto-generated method stub
 		return message;
 	}
 

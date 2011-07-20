@@ -4,26 +4,27 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.events.implementations.EimerEventFabian;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
-import ita23.projekt.mud.items.implementations.Heron.Opferfeuer;
-import ita23.projekt.mud.rooms.implementations.Home;
 
+/**
+ * Ein Teil des Unfertigen "Eimer-
+ *  Rätsel"
+ * @author Fabian Bottler
+ *
+ */
 public class Wasserhahn extends BasicItem{
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Wasserhahan";
 	} 
 
 	@Override
 	public String getInspectString() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTakeable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

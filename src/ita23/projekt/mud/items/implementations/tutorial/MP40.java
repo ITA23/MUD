@@ -8,7 +8,7 @@ import ita23.projekt.mud.rooms.implementations.Home;
 
 /**
  * MP40 welche im Tutorial verwendet wird.
- * @author ita23
+ * @author Lukas Knuth
  *
  */
 public class MP40 extends BasicItem{

@@ -13,7 +13,15 @@ public abstract class BasicItem {
 	/** Wird benutzt, um Items welche sich im Inventar des
 	 * Spielers benutzten nicht mehr im Raum an zu zeigen.
 	 */
-	private boolean inInventar = false;
+	private boolean inInventar;
+	
+	/**
+	 * Erstellt ein neues "BasicItem" welches sich
+	 *  nicht im Inventar des Spielers befindet.
+	 */
+	public BasicItem(){
+		this.inInventar = false;
+	}
 	
 	/**
 	 * Gibt den Namen des Items zurück

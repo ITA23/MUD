@@ -3,7 +3,9 @@ package ita23.projekt.mud;
 import java.util.ArrayList;
 
 /**
- * Nimmt die Eingaben vom Benutzer und vervollständigt diese
+ * Nimmt die Eingaben vom Benutzer entgegen und
+ *  versucht aus allen verfügbaren Befehlen den
+ *  richtigen vor zu schlagen.
  * @author Rafa Marques, Lukas Knuth
  * 
  */
@@ -13,7 +15,10 @@ public class AutoComplete {
 	/** Array Liste für die Befehle */
 	ArrayList<String> befehle = new ArrayList<String>();
 	
-	/** Alle Befehle */
+	/**
+	 * Befüllt die ArrayList mit allen möglichen
+	 *  Befehlen.
+	 */
 	public AutoComplete() {
 		befehle.add("benutze");
 		befehle.add("inventar");
@@ -26,13 +31,10 @@ public class AutoComplete {
 	
 	/**
 	 * Eingabe wird übergeben und geguckt ob es einen Befehl gibt
-	 * @param eingabe vom Benutzer
-	 * @return ergebnis oder null
+	 * @param eingabe Eingabe vom Benutzer
+	 * @return ergebnis Den Befehl als String oder null
 	 */
 	public String woerterChecken(String eingabe) {
-		String ergebnis;
-		int laenge = eingabe.length();
-		
 		for (String eintrag : befehle) {
 			String teil = eintrag.toUpperCase();
 			if (teil.startsWith(eingabe.toUpperCase())) {
