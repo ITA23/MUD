@@ -2,6 +2,7 @@ package ita23.projekt.mud;
 
 import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
+import ita23.projekt.mud.items.CantTakeItemException;
 import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.ItemNotFoundException;
 import ita23.projekt.mud.items.implementations.special.Selbst;
@@ -38,6 +39,8 @@ public class Game {
 	private static final String LIST_INVENTAR = "inventar";
 	/** Befehl zum benutzt zwei Gegenstände miteinander */
 	private static final String BENUTZE = "benutze";
+	/** Befehl zum unersuchen eines bestimmten Gegenstandes */
+	private static final String UNTERSUCHE = "untersuche";
 	/** Befehl um die Story zum aktuellen Raum erneut aus zu geben */
 	private static final String STORY = "story";
 	/** Befehl zum anzeigen aller Befehle und ihrer Wirkung */
@@ -62,10 +65,12 @@ public class Game {
 			String ret = akt_room.listItems();
 			if (isTutorial){
 				ret += "\n"+
-				"> \"Sehr gut, der Private davorn hat noch eins. Nehmen sie es, er braucht es nicht mehr!\"\n\n "+
-				"  Um einen Gegenstand benutzen zu können nehmen Sie ihn auf um ihn in Ihr Inventar zu packen. " +
-				"Benutzen Sie dazu den \"nimm\"-Befehl mit dem Namen des Items: " +
-				"\"Nimm Magazin\" Die Groß- und Kleinschreibung spielt hierbei keine Rolle.";
+				"> \"Sehr gut, der Private davorn hat noch eins. Schauen Sie nach" +
+				" ob noch was drin ist!" +
+				"\n\n" +
+				"  Benutzen Sie den \"untersuche\"-Befehl um einen Gegenstand genauer zu" +
+				"untersuchen: \""+UNTERSUCHE+" Magazin\".\n" +
+				"Die Groß- und Kleinschreibung spielt hierbei keine Rolle.";
 			}
 			return ret;
 		}
@@ -73,22 +78,24 @@ public class Game {
 		else if (input.startsWith(NEHMEN)){
 			// Checken ob der Befehl richtig eingegeben wurde:
 			if (input.length() <= NEHMEN.length() +1){
-				return "Die Syntax lautet: \"nimm [item]\"";
+				return "Die Syntax lautet: \""+NEHMEN+" [item]\"";
 			}
 			// Nimm irgendwas.
 			String item_name = input.substring(NEHMEN.length()+1);
 			try {
-				BasicItem i = akt_room.getItem(item_name);
+				BasicItem i = akt_room.takeItem(item_name);
 				inventar.put(i.getName().toUpperCase(), i);
 			} catch (ItemNotFoundException e) {
-				return "In diesem Raum gibt es kein "+item_name;
+				return e.getMessage();
+			} catch (CantTakeItemException e) {
+				return e.getMessage();
 			}
 			// Gib Nachricht zurück
 			String msg = "Du hast "+item_name+" aufgenommen.";
 			if (isTutorial){
 				msg += "\n\n> \"Glotzen sie es nicht an, laden sie nach!\" \n\n"+
 				"  Sie könne das \"Magazin\" aus ihrem Inventar mit ihrer \"MP40\" benutzen. \n" +
-				"Nutzen Sie dazu den \"benutze\"-Befehl: \"benutze Magazin mit MP40\""; 
+				"Nutzen Sie dazu den \""+BENUTZE+"\"-Befehl: \""+BENUTZE+" Magazin mit MP40\""; 
 			}
 			return msg;
 		} 
@@ -107,7 +114,7 @@ public class Game {
 				msg += "\n\n> \"Verdammt, ich hab auch keins mehr. " +
 						"Vielleicht liegt eins hier rum, schauen sie mal nach!\" \n\n"+
 						" Um Dinge welche sie nehmen könne in ihrer Umgebung zu finden, " +
-						"benutzen Sie den \"dinge\"-Befehl";
+						"benutzen Sie den \""+DINGE+"\"-Befehl";
 			}
 			return msg;
 		} 
@@ -117,7 +124,7 @@ public class Game {
 			String[] befehl = input.split(" ");
 			// Teste ob valider befehl:
 			if (befehl.length != 4){
-				return "Die Syntax lautet: \"benutze [item] mit [item]\"";
+				return "Die Syntax lautet: \""+BENUTZE+" [item] mit [item]\"";
 			}
 			if (inventar.containsKey(befehl[1].toUpperCase()) ){
 				// Check ob selbst/tür oder item:
@@ -142,7 +149,30 @@ public class Game {
 			} else {
 				return "In deinem Inventar befindet sich kein "+befehl[1]+ "/"+befehl[3];
 			}
-		} 
+		}
+		// ------------------------------------
+		else if (input.startsWith(UNTERSUCHE)){
+			// Checke input:
+			if (input.length() <= UNTERSUCHE.length() +1){
+				return "Die Syntax lautet: \""+UNTERSUCHE+" [item]\"";
+			}
+			String item_name = input.substring(UNTERSUCHE.length()+1);
+			String msg = "";
+			try {
+				msg += akt_room.inspectItem(item_name);
+			} catch (ItemNotFoundException e){
+				return e.getMessage();
+			}
+			// Tutorial Nachricht angängen:
+			if (isTutorial){
+				msg += "\n\n" +
+					"> \"Sehr gut! Nehmen sie es, er braucht es nicht mehr!\"\n\n "+
+					"  Um einen Gegenstand benutzen zu können nehmen Sie ihn auf um ihn in Ihr Inventar zu packen. " +
+					"Benutzen Sie dazu den \""+NEHMEN+"\"-Befehl mit dem Namen des Items: " +
+					"\""+NEHMEN+" Magazin\"";
+			}
+			return msg;
+		}
 		// ------------------------------------
 		else if (input.startsWith(STORY)){
 			// Story nochmla lesen:
@@ -152,9 +182,10 @@ public class Game {
 		else if (input.startsWith(HILFE)){
 			// Ausgabe aller Befehle
 			String msg = DINGE+" \t\t Listet alle Dinge im aktuellen Raum auf\n" +
-					NEHMEN+" \t\t Nimm einen Gegenstand aus dem aktuellen Raum\n" +
+					NEHMEN+" [item]\t\t Nimm einen Gegenstand aus dem aktuellen Raum\n" +
 					LIST_INVENTAR+" \t Listet alle Gegenstände im Inventar auf\n" +
-					BENUTZE+" [Item] mit [Item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tür\" und \"selbst\" benuzt werden.\n"+
+					UNTERSUCHE+" [item]\t Gibt genauere Informationen zum angegebenen Gegenstand zurück.\n" +
+					BENUTZE+" [item] mit [item] \t Benute einen Gegenstand im Inventar mit einem anderen. Gegnstände können auch mit \"tür\" und \"selbst\" benuzt werden.\n"+
 					STORY+" \t\t Zeigt die Story zum aktuellen Raum erneut an.\n";
 			if (isTutorial){
 				msg += "\n> \"Private! Soldat! Kommen sie zu sich, wir haben eine Mission zu erfüllen!\" \n" +

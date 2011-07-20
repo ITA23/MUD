@@ -23,4 +23,14 @@ public class Tuer extends BasicItem{
 		throw new CantUseItemException("Du Türe nicht benutzen");
 	}
 
+	@Override
+	public String getInspectString() {
+		return "Eine verschlossene Türe. Was sich wohl dahinter verbirgt...";
+	}
+
+	@Override
+	public boolean isTakeable() {
+		return false;
+	}
+
 }

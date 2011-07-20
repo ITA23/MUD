@@ -22,6 +22,20 @@ public abstract class BasicItem {
 	public abstract String getName();
 	
 	/**
+	 * Gibt genauere Informationen zu diesem Gegenstand
+	 *  als String zurück.
+	 * @return Die genaueren Informationen als String
+	 */
+	public abstract String getInspectString();
+	
+	/**
+	 * Gibt an ob dieses Item in das Inventar aufgenommen
+	 *  werden kann.
+	 * @return "true" wenn ja, sonst "false".
+	 */
+	public abstract boolean isTakeable();
+	
+	/**
 	 * Löst ein Event aus wenn ein bestimmtes Item mit diesem Item
 	 * kombiniert wird
 	 * @param item Das Item welches mit diesem Item kombiniert werden soll
