@@ -50,7 +50,8 @@ public abstract class BasicRoom {
 			if (item.getName().equalsIgnoreCase(name)){
 				// Testen ob das Item genommen werden kann.
 				if (!item.isTakeable()){
-					throw new CantTakeItemException("Das Item \""+item+"\" kann nicht aufgenommen werden.");
+					throw new CantTakeItemException("Das Item \""+item.getName()+
+							"\" kann nicht aufgenommen werden.");
 				}
 				item.setInInventar(true);
 				return item;
