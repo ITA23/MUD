@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  * Startpunkt des Programms, welcher das GUI erstellt und die Benutzer-
@@ -24,7 +26,7 @@ import javax.swing.JTextField;
  * @author Lukas Knuth
  *
  */
-public class Main implements ActionListener, KeyListener{
+public class Main implements ActionListener, KeyListener {
 	
 	/** Instanz des Spiels */
 	private Game game;

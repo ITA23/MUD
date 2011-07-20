@@ -19,21 +19,21 @@ public class CommandStack {
 	 * Erstellt den Command-Stack, welcher die history
 	 *  der eingegebenen befehle speichert.
 	 */
+	
+	
 	public CommandStack(){
 		stack = new ArrayList<String>();
 		stack.add("");
 		position = 1;
 	}
 	
-<<<<<<< HEAD
 	// Wenn Pfeiltaste nach unten gedrückte
-=======
+
 	/**
 	 * Gibt den (wenn möglich) nächsten eingegebenen
 	 *  Befehl des Benutzers zurück.
 	 * @return Das nächste Element in der Liste
 	 */
->>>>>>> ea70a44348acf606ef2d4b51077519a189a098da
 	public String getNext(){
 		position++;
 		if (position < 0){
