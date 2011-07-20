@@ -15,7 +15,7 @@ Was funktioniert bereits:
 * Items können miteinander kombiniert werden.
 * Rätsel können auf mehrere Arten gelöst werden
 * Es gibt mehrere Räume
-* Support für Umlaute dank eigener Konsole
+* Support für Umlaute und Leerzeichen dank eigener Konsole
 * Tutorial zur Einleitung in das Spiel
 * Befehle können einfach erneut ausgeführt werden
 * Dinge können untersucht werden
@@ -30,6 +30,10 @@ realisiert. Einige sind:
 * Dinge können nun untersucht werden
 * Manche Items können nicht aufgenommen werden (Rätsel-Gegenstände)
 * Das Tutorial kann nun verlassen werden (Bug entfernt)
+* AutoComplete für die Standart-Befehle wurde hinzugefügt (Experimentell)
+* Der Parser kann nun auch Leerzeichen verstehen
+* Neue Räume und Items hinzugefügt
+* Befehls-Stapel funktioniert nun komplett
 
 ### Tag 6 ###
 Eine Schwere Mutivationsgrube lies nur den folgenden Fortschritt zu:
