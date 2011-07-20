@@ -1,7 +1,7 @@
 package ita23.projekt.mud.items.implementations.tutorial;
 
 import ita23.projekt.mud.events.BasicEvent;
-import ita23.projekt.mud.events.implementations.NextRoomEvent;
+import ita23.projekt.mud.events.implementations.LeaveTutorialEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.rooms.implementations.Home;
@@ -25,9 +25,19 @@ public class Magazin extends BasicItem{
 			String msg = ">  \"Sehr gut. Sie sind ein echter Soldat Private Weichei! " +
 				"Und jetzt knallen sie ein paar Feinde a...\"\n" +
 				"*piieeeep*";
-			return new NextRoomEvent(msg, new Home());
+			return new LeaveTutorialEvent(msg, new Home());
 		}
 		throw new CantUseItemException(getName(), item.getName());
+	}
+
+	@Override
+	public String getInspectString() {
+		return "Das Magazin ist noch unbenutzt.";
+	}
+
+	@Override
+	public boolean isTakeable() {
+		return true;
 	}
 
 }

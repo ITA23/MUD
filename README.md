@@ -18,8 +18,18 @@ Was funktioniert bereits:
 * Support für Umlaute dank eigener Konsole
 * Tutorial zur Einleitung in das Spiel
 * Befehle können einfach erneut ausgeführt werden
+* Dinge können untersucht werden
+* Es gibt nun Dinge, welche man nicht aufnehmen kann.
 
 ## Entwicklungs Tagebuch ##
+
+### Tag 7 ###
+Ein paar grundliegende Änderungen und andere Sachen wurden auf den Letzten drücker
+realisiert. Einige sind:
+
+* Dinge können nun untersucht werden
+* Manche Items können nicht aufgenommen werden (Rätsel-Gegenstände)
+* Das Tutorial kann nun verlassen werden (Bug entfernt)
 
 ### Tag 6 ###
 Eine Schwere Mutivationsgrube lies nur den folgenden Fortschritt zu:

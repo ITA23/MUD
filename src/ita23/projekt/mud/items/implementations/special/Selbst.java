@@ -28,4 +28,15 @@ public class Selbst extends BasicItem{
 		throw new CantUseItemException("Du kannst nur Dinge mit dir selbst benutzen.");
 	}
 
+	@Override
+	public String getInspectString() {
+		return "Jimmy Pressgo, 12 Jahre alt aus Berlin. Aufgrund seiner Intelligenz " +
+				"unter gleichaltrigen nicht unbedingt beliebt.";
+	}
+
+	@Override
+	public boolean isTakeable() {
+		return false;
+	}
+
 }
