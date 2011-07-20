@@ -20,7 +20,9 @@ public class Tuer extends BasicItem{
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		throw new CantUseItemException("Du Türe nicht benutzen");
+		
+		throw new CantUseItemException("Du kannst nichts mit der" +
+				"Türe benutzen.");
 	}
 
 	@Override

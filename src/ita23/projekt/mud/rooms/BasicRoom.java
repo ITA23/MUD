@@ -68,10 +68,10 @@ public abstract class BasicRoom {
 		StringBuilder b = new StringBuilder();
 		String nachricht = "Gegenstände in diesem Raum:\n\n";
 		for (BasicItem item : dinge){
-			if (!item.inInventar()) b.append("\t* "+item.getName());
+			if (!item.inInventar()) b.append("\t* "+item.getName() +"\n");
 		}
 		if (b.length() == nachricht.length()) return "Es befinden sich keine Gegenstände in diesem Raum";
-		return nachricht + b.toString() + "\n";
+		return nachricht + b.toString();
 	}
 	
 	/**
@@ -92,6 +92,24 @@ public abstract class BasicRoom {
 			}
 		}
 		throw new ItemNotFoundException("In diesem Raum befindet sich kein \""+name+"\"");
+	}
+	
+	/**
+	 * Gibt ein als "nicht nehmbar" gekennzeichnetes Item
+	 *  im aktuellen Raum zurück.
+	 * @param name Der Name des Items
+	 * @return Das gefundene Item
+	 * @throws ItemNotFoundException Wird geworfen, wenn
+	 *  kein Item zum angegebenen Namen gefunden wurde.
+	 */
+	public BasicItem getUntakeableItem(String name) throws ItemNotFoundException{
+		for (BasicItem item : dinge){
+			if (!item.isTakeable() && item.getName().equalsIgnoreCase(name)){
+				return item;
+			}
+		}
+		throw new ItemNotFoundException("Ein \""+name+"\" befindet sich weder " +
+				"in deinem Inventar als in diesem Raum.");
 	}
 
 }

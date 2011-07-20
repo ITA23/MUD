@@ -23,6 +23,14 @@ Was funktioniert bereits:
 
 ## Entwicklungs Tagebuch ##
 
+### Nachbesserungen ###
+Nach dem Ende von Tag 7, dem offiziell letzten Tag vor der Präsentation des Resultats wurden 
+in Privater Heimarbeit noch folgende Dinge realisiert:
+
+* Dinge, welche nicht aufgenommen werden können, können nun benutzt werden
+* Einige Fehler und kleinere Bugs wurden ausgebessert
+* Ein Abspann wurde angefügt
+
 ### Tag 7 ###
 Ein paar grundliegende Änderungen und andere Sachen wurden auf den Letzten drücker
 realisiert. Einige sind:

@@ -4,10 +4,10 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.events.implementations.NextRoomEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
-import ita23.projekt.mud.rooms.implementations.Home;
+import ita23.projekt.mud.rooms.implementations.Abspann;
 
 /**
- *Wenn das Opferfeuer entz�ndet wurde, �ffnet sich die T�r
+ *Wenn das Opferfeuer entzündet wurde, öffnet sich die Tür
  * @author Fabian Bottler
  *
  */
@@ -21,10 +21,10 @@ public class Opferfeuer extends BasicItem {
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		if (Opferfeuer.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entz�ndet.\n "+
-			"Die T�r �ffnet sich langsam mit lautem gequietsche...";
-			return new NextRoomEvent(msg, new Home());
+		if (Fackel.class == item.getClass()){
+			String msg = "Sie haben mit der Fackel das Opferfeuer entzündet.\n "+
+			"Die Tür öffnet sich langsam mit lautem gequietsche...";
+			return new NextRoomEvent(msg, new Abspann());
 		}
 		throw new CantUseItemException(getName(), item.getName());
 		
@@ -43,7 +43,6 @@ public class Opferfeuer extends BasicItem {
 
 	@Override
 	public boolean isTakeable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

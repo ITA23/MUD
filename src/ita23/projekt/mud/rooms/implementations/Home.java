@@ -2,6 +2,7 @@ package ita23.projekt.mud.rooms.implementations;
 
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.implementations.home.AtomicToaster;
+import ita23.projekt.mud.items.implementations.home.Klinke;
 import ita23.projekt.mud.items.implementations.home.McDonaldsTeilchenBeschleuniger;
 import ita23.projekt.mud.rooms.BasicRoom;
 
@@ -14,9 +15,10 @@ public class Home extends BasicRoom{
 
 	@Override
 	public void initialisieren() {
-		this.dinge = new BasicItem[2];
+		this.dinge = new BasicItem[3];
 		dinge[0] = new McDonaldsTeilchenBeschleuniger();
 		dinge[1] = new AtomicToaster();
+		dinge[2] = new Klinke();
 	}
 
 	@Override

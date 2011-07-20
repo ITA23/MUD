@@ -123,37 +123,52 @@ public class Game {
 		// ------------------------------------
 		else if (input.startsWith(BENUTZE)){
 			// Benutze einen Gegenstand aus dem Inventar
-			String item1 = "";
-			String item2 = "";
+			String item1_name = "";
+			String item2_name = "";
 			try {
 				int offset = input.indexOf(MIT)-1;
-				item1 = input.substring(BENUTZE.length()+1, offset);
-				item2 = input.substring(BENUTZE.length() + item1.length() + MIT.length() + 3);
+				item1_name = input.substring(BENUTZE.length()+1, offset);
+				item2_name = input.substring(BENUTZE.length() + item1_name.length() +
+					MIT.length() + 3);
 			} catch (IndexOutOfBoundsException e){
-				return "Die Syntax lautet: \""+BENUTZE+" [item] mit [item]\"";
+				return "Die Syntax lautet: \""+BENUTZE+" [item] "+MIT+" [item]\"";
 			}
-			if (inventar.containsKey(item1.toUpperCase()) ){
-				// Check ob selbst/tür oder item:
-				BasicItem tmp = null;
-				if ( inventar.containsKey(item2.toUpperCase()) ){
-					tmp = inventar.get(item2.toUpperCase());
-				} else if ( item2.equalsIgnoreCase(SELBST) ){
-					tmp = new Selbst();
-				} else if ( item2.equalsIgnoreCase(TUER) ){
-					tmp = new Tuer();
-				} else {
-					return "In deinem Inventar befindet sich kein "+item1+ "/"+item2;
-				}
+			// Checke nach Item 1
+			BasicItem item1 = null;
+			if (inventar.containsKey(item1_name.toUpperCase()) ){
+				item1 = inventar.get(item1_name.toUpperCase());
+			} else {
+				// Checke ob festes Item im aktuellen Raum:
 				try {
-					BasicEvent e = inventar.get( item1.toUpperCase() ).use( tmp );
-					// Führe Event-Aktionen durch:
-					e.doEvent();
-					return e.getEventMessage();
-				} catch (CantUseItemException e) {
+					item1 = akt_room.getUntakeableItem(item1_name);
+				} catch (ItemNotFoundException e) {
 					return e.getMessage();
 				}
+			}
+			// Checke nach Item 2
+			BasicItem item2 = null;
+			// Check ob selbst/tür oder item:
+			if ( inventar.containsKey(item2_name.toUpperCase()) ){
+				item2 = inventar.get(item2_name.toUpperCase());
+			} else if ( item2_name.equalsIgnoreCase(SELBST) ){
+				item2 = new Selbst();
+			} else if ( item2_name.equalsIgnoreCase(TUER) ){
+				item2 = new Tuer();
 			} else {
-				return "In deinem Inventar befindet sich kein "+item1+ "/"+item2;
+				// Checke ob festes Item im aktuellen Raum:
+				try {
+					item2 = akt_room.getUntakeableItem(item2_name);
+				} catch (ItemNotFoundException e) {
+					return e.getMessage();
+				}
+			}
+			try {
+				BasicEvent e = item1.use( item2 );
+				// Führe Event-Aktionen durch:
+				e.doEvent();
+				return e.getEventMessage();
+			} catch (CantUseItemException e) {
+				return e.getMessage();
 			}
 		}
 		// ------------------------------------

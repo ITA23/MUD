@@ -5,10 +5,10 @@ import ita23.projekt.mud.events.implementations.NextRoomEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.implementations.Heron.Opferfeuer;
-import ita23.projekt.mud.rooms.implementations.Home;
+import ita23.projekt.mud.rooms.implementations.Abspann;
 
 /**
- *Mit der Fakel kann man das Opferfeuer entz�nden
+ *Mit der Fakel kann man das Opferfeuer entzünden
  * @author Fabian Bottler
  */
 
@@ -22,9 +22,9 @@ public class Fackel  extends BasicItem {
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
 		if (Opferfeuer.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entz�ndet.\n "+
-			"Die T�r �ffnet sich langsam mit lautem gequietsche...";
-			return new NextRoomEvent(msg, new Home());
+			String msg = "Sie haben mit der Fackel das Opferfeuer entzündet.\n "+
+			"Die Tür öffnet sich langsam mit lautem gequietsche...";
+			return new NextRoomEvent(msg, new Abspann());
 		}
 		throw new CantUseItemException(getName(), item.getName());
 		
@@ -32,13 +32,11 @@ public class Fackel  extends BasicItem {
 
 	@Override
 	public String getInspectString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Ein Stück Holz mit einem Brennenden Ende... Eine Fackel eben.";
 	}
 
 	@Override
 	public boolean isTakeable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
