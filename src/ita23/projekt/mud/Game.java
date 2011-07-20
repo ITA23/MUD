@@ -7,9 +7,9 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.items.ItemNotFoundException;
 import ita23.projekt.mud.items.implementations.special.Selbst;
 import ita23.projekt.mud.items.implementations.special.Tuer;
-import ita23.projekt.mud.items.implementations.tutorial.MP40;
+import ita23.projekt.mud.items.implementations.*;
 import ita23.projekt.mud.rooms.BasicRoom;
-import ita23.projekt.mud.rooms.implementations.Tutorial;
+import ita23.projekt.mud.rooms.implementations.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -237,10 +237,10 @@ public class Game {
 	 */
 	private void initialize(){
 		inventar = new HashMap<String, BasicItem>();
-		isTutorial = true;
+		isTutorial = false;
 		// Setz den aktuellen Raum:
-		akt_room = new Tutorial();
-		inventar.put(new MP40().getName().toUpperCase(), new MP40());
+		akt_room = new EimerRätsel();
+		//inventar.put(new MP40().getName().toUpperCase(), new MP40());
 	}
 	
 	/**
