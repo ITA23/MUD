@@ -7,7 +7,7 @@ import ita23.projekt.mud.items.CantUseItemException;
 import ita23.projekt.mud.rooms.implementations.Home;
 
 /**
- *Wenn das Opferfeuer entzündet wurd, öffnet sich die Tür
+ *Wenn das Opferfeuer entzï¿½ndet wurde, ï¿½ffnet sich die Tï¿½r
  * @author Fabian Bottler
  *
  */
@@ -22,12 +22,29 @@ public class Opferfeuer extends BasicItem {
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
 		if (Opferfeuer.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entzündet.\n "+
-			"Die Tür öffnet sich langsam mit lautem gequietsche...";
+			String msg = "Sie haben mit der Fackel das Opferfeuer entzï¿½ndet.\n "+
+			"Die Tï¿½r ï¿½ffnet sich langsam mit lautem gequietsche...";
 			return new NextRoomEvent(msg, new Home());
 		}
 		throw new CantUseItemException(getName(), item.getName());
 		
+	}
+
+	@Override
+	public String getInspectString() {
+		return "Das Opferfeuer ist mit einem BehÃ¤ler, der zu hÃ¤lfte mit \n" +
+				"Wasser gefÃ¼llt ist, verbunden. \n" +
+				"Die WÃ¤rme des Feuers dehtn die Luft im BehÃ¤lter und \n" +
+				"drÃ¼ckt das Wasser in einen Eimer. \n" +
+				"Der Eimmer wird immer schwerrer und Ã¶ffnet Ã¼ber SeilzÃ¼ge langsam die TÃ¼r. \n" +
+				"Wenn das Feuer wieder erlischt kehrt sich der ganze Prosses um  \n" +
+				"und die TÃ¼r schlisst sich wieder \n";
+	}
+
+	@Override
+	public boolean isTakeable() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -8,7 +8,7 @@ import ita23.projekt.mud.items.implementations.Heron.Opferfeuer;
 import ita23.projekt.mud.rooms.implementations.Home;
 
 /**
- *Mit der Fakel kann man das Opferfeuer entzünden
+ *Mit der Fakel kann man das Opferfeuer entzï¿½nden
  * @author Fabian Bottler
  */
 
@@ -22,12 +22,24 @@ public class Fackel  extends BasicItem {
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
 		if (Opferfeuer.class == item.getClass()){
-			String msg = "Sie haben mit der Fackel das Opferfeuer entzündet.\n "+
-			"Die Tür öffnet sich langsam mit lautem gequietsche...";
+			String msg = "Sie haben mit der Fackel das Opferfeuer entzï¿½ndet.\n "+
+			"Die Tï¿½r ï¿½ffnet sich langsam mit lautem gequietsche...";
 			return new NextRoomEvent(msg, new Home());
 		}
 		throw new CantUseItemException(getName(), item.getName());
 		
+	}
+
+	@Override
+	public String getInspectString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isTakeable() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }
