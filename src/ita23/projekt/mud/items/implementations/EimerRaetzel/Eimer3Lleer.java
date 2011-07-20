@@ -9,7 +9,7 @@ public class Eimer3Lleer extends BasicItem {
 
 	@Override
 	public String getName() {
-		return "Eimer3L_sdf";
+		return "Leerer 3L Eimer";
 	}
 
 	@Override
