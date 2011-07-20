@@ -26,7 +26,7 @@ import javax.swing.event.DocumentListener;
  * @author Lukas Knuth
  *
  */
-public class Main implements ActionListener, KeyListener {
+public class Main implements ActionListener, KeyListener, DocumentListener {
 	
 	/** Instanz des Spiels */
 	private Game game;
@@ -42,12 +42,15 @@ public class Main implements ActionListener, KeyListener {
 	/** Stack der letzten eingegebenen Befehle */
 	private CommandStack history;
 	
+	private AutoComplete auto;
+	
 	/**
 	 * Startet das Spiel und erstellt das GUI
 	 */
 	private Main(){
 		game = Game.getInstance();
 		history = new CommandStack();
+		auto = new AutoComplete();
 		
 		// Mache GUI:
 		makeGUI();
@@ -81,6 +84,7 @@ public class Main implements ActionListener, KeyListener {
 			}
 		});
 		in.addKeyListener(this);
+		in.getDocument().addDocumentListener(this);
 		send = new JButton("do");
 		send.addActionListener(this);
 		f.getRootPane().setDefaultButton(send);
@@ -130,4 +134,28 @@ public class Main implements ActionListener, KeyListener {
 	@Override public void keyPressed(KeyEvent e) {}
 	@Override public void keyTyped(KeyEvent e) {}
 
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		String eingabe = in.getText();
+		int laenge = eingabe.length();
+		
+		if (laenge >= 3) {
+			System.out.println( auto.woerterChecken(eingabe));
+		}
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		String eingabe = in.getText();
+		int laenge = eingabe.length();
+		
+		if (laenge >= 3) {
+			System.out.println( auto.woerterChecken(eingabe) );
+		}
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+	}
 }
