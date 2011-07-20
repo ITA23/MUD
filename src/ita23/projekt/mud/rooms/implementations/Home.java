@@ -1,6 +1,7 @@
 package ita23.projekt.mud.rooms.implementations;
 
 import ita23.projekt.mud.items.BasicItem;
+import ita23.projekt.mud.items.implementations.home.McDonaldsTeilchenBeschleuniger;
 import ita23.projekt.mud.rooms.BasicRoom;
 
 /**
@@ -12,7 +13,8 @@ public class Home extends BasicRoom{
 
 	@Override
 	public void initialisieren() {
-		this.dinge = new BasicItem[0];
+		this.dinge = new BasicItem[1];
+		dinge[0] = new McDonaldsTeilchenBeschleuniger();
 	}
 
 	@Override
@@ -38,8 +40,11 @@ public class Home extends BasicRoom{
 				"\n\n" +
 				"Aufgeregt riss er den Briefumschlag auf, entfaltete das Papier und las, was dort gedruckt stand." +
 				"\n\n" +
-				"> \"Er... Er ist Tod Mom. Ich bin zu seiner Testamentseröffnung eingeladen. Es ist morgen " +
-				"um 13:00 Uhr. Ich werde von der Schule aus hin gehen.\"";
+				"> \"Er... Er ist Tod Mom. Ich bin zu seiner Testamentseröffnung eingeladen. Heute.\"\n" +
+				"> \"Erst gehst du in die Schule!\"\n" +
+				"> \"Ja Mom...\"\n" +
+				"\n\n" +
+				"Was braucht man für ein Abentuer? Sammle nützliche Dinge ein und benutze dann die Türklinke.";
 	}
 
 }
