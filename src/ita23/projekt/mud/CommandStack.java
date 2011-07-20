@@ -52,6 +52,9 @@ public class CommandStack {
 	 * @return Der vorherige Befehl in der Liste
 	 */
 	public String getPrevous(){
+		if (stack.size() == 1){
+			return "";
+		}
 		position--;
 		if (position < 1){
 			position = 1;

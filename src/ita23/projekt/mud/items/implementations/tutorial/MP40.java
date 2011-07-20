@@ -29,7 +29,7 @@ public class MP40 extends BasicItem{
 
 	@Override
 	public BasicEvent use(BasicItem item) throws CantUseItemException {
-		if (MP40.class == item.getClass()){
+		if (Magazin.class == item.getClass()){
 			String msg = ">  \"Sehr gut. Sie sind ein echter Soldat Private Weichei! " +
 					"Und jetzt knallen sie ein paar Feinde a...\"\n" +
 					"*piieeeep*";

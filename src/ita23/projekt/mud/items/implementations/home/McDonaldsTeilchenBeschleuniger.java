@@ -4,6 +4,12 @@ import ita23.projekt.mud.events.BasicEvent;
 import ita23.projekt.mud.items.BasicItem;
 import ita23.projekt.mud.items.CantUseItemException;
 
+/**
+ * Ein Sinnloses Item welches in Jimmys Zimmer herum
+ *  liegt.
+ * @author Lukas Knuth
+ *
+ */
 public class McDonaldsTeilchenBeschleuniger extends BasicItem{
 
 	@Override
