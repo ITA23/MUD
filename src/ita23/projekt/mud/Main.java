@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -14,9 +15,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  * Startpunkt des Programms, welcher das GUI erstellt und die Benutzer-
@@ -24,7 +28,7 @@ import javax.swing.JTextField;
  * @author Lukas Knuth
  *
  */
-public class Main implements ActionListener, KeyListener{
+public class Main implements ActionListener, KeyListener, DocumentListener {
 	
 	/** Instanz des Spiels */
 	private Game game;
@@ -40,12 +44,17 @@ public class Main implements ActionListener, KeyListener{
 	/** Stack der letzten eingegebenen Befehle */
 	private CommandStack history;
 	
+	/** AutoComplete eingabe vom Benutzer vervollständigen */
+	private AutoComplete auto;
+	
 	/**
 	 * Startet das Spiel und erstellt das GUI
 	 */
 	private Main(){
 		game = Game.getInstance();
 		history = new CommandStack();
+		auto = new AutoComplete();
+		
 		// Mache GUI:
 		makeGUI();
 		// Zeige Epilog an:
@@ -56,7 +65,7 @@ public class Main implements ActionListener, KeyListener{
 	 * Erstellt das GUI und macht es sichtbar.
 	 */
 	public void makeGUI(){
-		f = new JFrame("Jimmy Presgo und die Schatulle des Lichts");
+		f = new JFrame("Inspector SlowMo und Detective ZeitRaffa");
 		f.setLayout(new BorderLayout());
 		// Box:
 		out = new JTextArea(30, 80);
@@ -78,6 +87,7 @@ public class Main implements ActionListener, KeyListener{
 			}
 		});
 		in.addKeyListener(this);
+		in.getDocument().addDocumentListener(this);
 		send = new JButton("do");
 		send.addActionListener(this);
 		f.getRootPane().setDefaultButton(send);
@@ -127,4 +137,29 @@ public class Main implements ActionListener, KeyListener{
 	@Override public void keyPressed(KeyEvent e) {}
 	@Override public void keyTyped(KeyEvent e) {}
 
+	/** Eingaben vom user werden an AutoComplete gesendet und ausgegeben */
+	
+	public void changedUpdate(DocumentEvent e) {
+		String eingabe = in.getText();
+		int laenge = eingabe.length();
+		
+		if (laenge >= 3) {
+			System.out.println( auto.woerterChecken(eingabe) );
+		}
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		String eingabe = in.getText();
+		int laenge = eingabe.length();
+		
+		if (laenge >= 3) { 
+			System.out.println( auto.woerterChecken(eingabe) );
+		}
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+	}
 }
