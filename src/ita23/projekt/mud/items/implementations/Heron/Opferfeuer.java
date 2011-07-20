@@ -32,12 +32,12 @@ public class Opferfeuer extends BasicItem {
 
 	@Override
 	public String getInspectString() {
-		return "Das Opferfeuer ist mit einem Behäler, der zu hälfte mit \n" +
+		return 	"Das Opferfeuer ist mit einem Behälter, der zu Hälfte mit \n" +
 				"Wasser gefüllt ist, verbunden. \n" +
-				"Die Wärme des Feuers dehtn die Luft im Behälter und \n" +
+				"Die Wärme des Feuers dehnt die Luft im Behälter und \n" +
 				"drückt das Wasser in einen Eimer. \n" +
-				"Der Eimmer wird immer schwerrer und öffnet über Seilzüge langsam die Tür. \n" +
-				"Wenn das Feuer wieder erlischt kehrt sich der ganze Prosses um  \n" +
+				"Der Eimer wird immer schwerer und öffnet über Seilzüge langsam die Tür. \n" +
+				"Wenn das Feuer wieder erlischt kehrt sich der ganze Prozess um  \n" +
 				"und die Tür schlisst sich wieder \n";
 	}
 
